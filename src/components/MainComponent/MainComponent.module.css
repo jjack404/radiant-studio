@@ -1,0 +1,26 @@
+.mainContainer {
+  background: linear-gradient(
+      0deg,
+      var(--Cream, #fef8e2) 0%,
+      var(--Cream, #fef8e2) 100%
+    ),
+    var(--Cream, #fef8e2);
+  display: flex;
+  gap: 10px;
+  height: 100vh;
+  width: 100vw;
+  flex-direction: column;
+  margin: 0 auto;
+  padding: 0;
+  align-content: space-evenly;
+}
+
+
+
+@media (max-width: 991px) {
+  
+}
+
+@media (max-width: 640px) {
+
+}

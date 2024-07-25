@@ -1,0 +1,10 @@
+.container {
+    background-color: #fce184;
+    color: var(--black, #0f0e0c);
+    font-family: Joystix, sans-serif;
+    width: stretch;
+    height: stretch;
+    padding: 6px;
+    margin: auto;
+    text-align: center;
+}

@@ -1,0 +1,148 @@
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+  }
+  
+  .Create {
+    width: auto;
+  }
+  
+  button {
+    margin: auto;
+    height: 2.6em;
+    align-content: center;
+    border: 1px solid #0F0E0C;
+    background-color: #FFF9E1;
+    cursor: pointer;
+    font-family: 'Joystix', sans-serif;
+  }
+
+  #createContainer {
+    background-color: #FFF9E1;
+    margin: .5em auto;
+    padding: .25em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: stretch;
+    min-width: 300px;
+    gap: 3px;
+  }
+
+  
+  #controlContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 600px;
+    padding-top: 5px;
+    margin: 0 auto;
+    gap: 3px;
+  }
+  
+  #undoRedoWrap {
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    margin: 0 auto .0 auto;
+    gap: 3px;
+    align-items: center;
+  }
+  
+  #canvasContainer {
+    position: relative;
+    width: 320px;
+    height: 320px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .canvas {
+    position: absolute;
+    width: 320px;
+    height: 320px;
+    border: 1px solid #0F0E0C;
+    cursor: none;
+    z-index: 1;
+  }
+  
+  #highlight-canvas {
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  #colorPicker {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    margin: auto;
+    justify-content: center;
+  }
+
+  .colorButton {
+    width: 2.5em;
+    margin: 0;
+  }
+  
+  #showGrid {
+    height: 2.6em;
+    width: 33%;
+    padding-right: 3px;
+  }
+  
+  #show-grid-btn {
+    height: 3.9em;
+    text-wrap: nowrap;
+  }
+  
+  #colorGrid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 3px;
+  }
+  
+  #color-grid button {
+    transition: transform 0.15s ease-in-out;
+  }
+  
+  #undo-redo-wrap {
+    width: 100%;
+    max-width: 500px;
+    padding: 0;
+  }
+  
+  #undo-btn,
+  #redo-btn {
+    width: 100%;
+  }
+  
+  #btnContainer {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: space-around;
+    width: 90%;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 3px;
+    position: relative;
+    bottom: 3px;
+  }
+  
+  #clearSave {
+    display: flex;
+    flex-flow: row;
+    gap: 3px;
+    margin-top: 3px;
+  }
+  
+  #color-grid button.selected {
+    transform: scale(0.9);
+  }
+  

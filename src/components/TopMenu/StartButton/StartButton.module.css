@@ -1,0 +1,38 @@
+.startButton {
+  box-shadow: 0 0 4px 0 #fce184;
+  background-color: var(--Yellow, #fce184);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border: 1px solid #0f0e0c;
+  border-left: 0;
+  gap: 8px;
+}
+
+.buttonText {
+  color: var(--Black, #0f0e0c);
+  text-align: center;
+  text-transform: uppercase;
+  font: 400 13px Joystix, sans-serif;
+}
+
+.dotGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.dot {
+  width: 17px;
+  height: 1px;
+  stroke-width: 1px;
+  stroke: var(--Black, #0f0e0c);
+  border: 1px solid #0f0e0c;
+}
+
+.dotFilled {
+  composes: dot;
+  fill: var(--Black, #0f0e0c);
+}
