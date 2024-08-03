@@ -19,6 +19,14 @@
 background-color: #fce184;
 }
 
+.iconGroup div:nth-child(6) {
+  display: none;
+}
+
+.iconGroup div:nth-child(7) {
+  display: none;
+}
+
 .icon {
   margin: auto;
   padding: 0;
@@ -29,19 +37,29 @@ background-color: #fce184;
 }
 
 .navigationBar svg {
-  width: 24px;
+  width: 20px;
   margin: auto;
   display: flex;
   justify-content: center;
 }
 
-.navigationBar svg path {
-}
 
 .iconGroup div {
   padding: 3px;
   background-color: #fef8e2;
   border: 1px solid #0f0e0c;
   display: flex;
+  height: 28px;
+}
+
+@media (min-width: 500px) {
+  .navigationBar svg {
+    width: 24px;
+  }
+
+  .iconGroup div {
+
   height: 32px;
+  }
+
 }

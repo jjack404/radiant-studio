@@ -4,21 +4,21 @@ import styles from "./Voting.module.css";
 const Voting = () => {
   return (
     <div className={styles.container}>
-      <div className={styles.votingGalleryContainer}>
+      <div className={styles.votingWrapper}>
         <div className={styles.votingTopThree}>
           <div className={styles.firstPlace}>
             <img src={'/assets/ex1.png'} alt="1st place"/>
-            <span>1<sup>st</sup>
-            </span>
+            <div className={styles.first} style={{flexDirection:"row"}}>1<span style={{fontSize:'12px'}}>st</span>
+              </div>
           </div>
           <div className={styles.secondThird}>
             <div><img src={'/assets/ex2.png'} alt=""/>
-              <span>2<sup>nd</sup>
-              </span>
+              <div className={styles.second} style={{flexDirection:"row"}}>2<span style={{fontSize:'9px'}}>nd</span>
+              </div>
             </div>
             <div><img src={'/assets/ex3.png'} alt=""/>
-              <span>3<sup>rd</sup>
-              </span>
+            <div className={styles.third} style={{flexDirection:"row"}}>3<span style={{fontSize:'9px'}}>rd</span>
+            </div>
             </div>
           </div>
         </div>

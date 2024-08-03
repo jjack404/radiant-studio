@@ -8,3 +8,15 @@
     margin: auto;
     text-align: center;
 }
+
+.myStudioWrapper {
+    display: flex;
+    flex-direction: column;
+    width: stretch;
+    object-fit: cover;
+    height: 100%;
+    gap: 6px;
+    padding: 6px;
+    background-color: #fef8e2;
+    border: 1px solid #0f0e0c;
+}

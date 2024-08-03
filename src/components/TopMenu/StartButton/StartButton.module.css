@@ -9,7 +9,7 @@
   border-left: 0;
   gap: 6px;
   min-width: 4em;
-  height: 40px;
+  height: 36px;
 }
 
 .buttonText {
@@ -50,4 +50,11 @@
 .dotFilled {
   composes: dot;
   fill: var(--Black, #0f0e0c);
+}
+
+
+@media (min-width: 500px) {
+  .startButton {
+    height: 40px;
+  }
 }

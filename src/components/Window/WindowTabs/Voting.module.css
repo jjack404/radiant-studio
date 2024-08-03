@@ -10,7 +10,7 @@
     overflow-y: scroll;
 }
 
-.votingGalleryContainer {
+.votingWrapper {
     display: flex;
     flex-direction: column;
     width: stretch;
@@ -63,9 +63,18 @@
     max-width: 100%;
 }
 
-.firstPlace span {
+.first {
+    text-align: center;
+    margin: auto;
     font-size: 2em;
     width: 100%;
+    display: flex;
+    
+}
+
+.first span {
+    margin: 0;
+    padding: 0;
 }
 
 .secondThird {
@@ -91,7 +100,8 @@
     padding: 1px;
 }
 
-.secondThird div span {
+.second,
+.third {
     width: 10%;
     line-height: normal;
 }

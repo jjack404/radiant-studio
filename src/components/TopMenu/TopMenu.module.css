@@ -8,18 +8,20 @@
   max-height: 2em;
   top: 7px;
   margin: auto;
+  padding: 0 6px 0 3px;
   margin-top: 3px;
   align-items: center;
   align-content: center;
   justify-content: space-between;
 }
 
+
+
 .topLogo {
   display: flex;
-  position: fixed;
+  position: relative;
   width: 2em;
   height: 2em;
-  top: 10.5px;
   margin: auto;
   margin-left: 6px;
   margin-right: 0;
@@ -40,10 +42,6 @@
 }
 
 @media (min-width: 420px) {
-
-  .mainContainer {
-  justify-content:end;
-  }
 
   .topLogo {
     position: relative;
