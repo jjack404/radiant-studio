@@ -3,8 +3,67 @@
     color: var(--black, #0f0e0c);
     font-family: Joystix, sans-serif;
     width: stretch;
-    height: stretch;
-    padding: 6px;
-    margin: auto;
+    height: 100%;
+    padding: 12px;
+    margin: 0 auto;
     text-align: center;
+    overflow-y: scroll;
 }
+
+.votingGalleryContainer {
+    display: flex;
+    flex-direction: column;
+    width: stretch;
+    object-fit: cover;
+}
+
+.votingGalleryGrid {
+    display: flex;
+    flex-flow: column;
+    flex-wrap: wrap;
+    padding: 12px;
+    gap: 12px;
+    background-color: aliceblue;
+    height: stretch;
+    width: 100%;
+}
+
+.votingTopThree {
+display: flex;
+flex-direction: row;
+
+}
+
+.votingRemainder {
+display: flex;
+flex-direction: column;
+
+}
+
+.votingTopThree div {
+    height: 100px;
+    width: 100px;
+    border: 1px solid #0f0e0c;
+    background-color: #fce184;
+    box-shadow: 2px 2px 0 0 #0f0e0c;
+    margin: auto;
+}
+
+.votingGalleryContainer div:nth-child(1) {
+    filter: drop-shadow(0px 0px 8px #fce184);
+    box-shadow: 2px 2px 0 0 #0f0e0c;
+    animation: glow 2s infinite;
+}
+
+@keyframes glow {
+    0% {
+        filter: drop-shadow(0px 0px 1px #fce184);
+    }
+    50% {
+        filter: drop-shadow(0px 0px 12px #fce184);
+    }
+    100% {
+        filter: drop-shadow(0px 0px 2px #fce184);
+    }
+}
+

@@ -14,9 +14,7 @@ const Footer = () => {
         <p className={styles.footerText}>
           all assets open-sourced under the Rad public license
         </p>
-        <div className={styles.footerLine}>
-          <div className={styles.footerLineTop} />
-        </div>
+        
       </div>
     </footer>
   );

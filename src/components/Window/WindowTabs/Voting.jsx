@@ -4,10 +4,28 @@ import styles from "./Voting.module.css";
 const Voting = () => {
   return (
     <div className={styles.container}>
-      <h2>Voting</h2>
-      <p>Welcome to the Voting tab.</p>
-    </div>
-  );
+      <div className={styles.votingGalleryContainer}>
+        <div className={styles.votingGalleryGrid}>
+          <div className={styles.votingTopThree}>
+            <div>1
+            </div>
+            <div>2
+            </div>
+            <div>3
+            </div>
+          </div>
+
+          <div className={styles.votingRemainder}>
+          <div>4
+            </div>
+            <div>5
+            </div>
+            <div>6
+            </div>
+            </div>
+        </div>
+      </div>
+      </div>);
 };
 
-export default Voting;
+      export default Voting;

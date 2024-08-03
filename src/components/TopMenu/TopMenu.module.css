@@ -1,31 +1,57 @@
 .mainContainer {
   display: flex;
+  position: relative;
   flex-direction: row;
-  width: 100vw;
+  width: 100%;
+  max-width: 750px;
+  height: 100%;
+  top: 3px;
   margin: auto;
   align-items: center;
-  flex-wrap: nowrap;
-}
-
-.topMenu {
-margin: auto;
-display: flex;
-flex-direction: row;
-position: absolute;
-left: 50%;
-top: 12px;
-transform: translateX(-50%);
+  align-content: center;
+  justify-content: space-between;
 }
 
 .topLogo {
   display: flex;
-  position: absolute;
-  right: 12px;
+  position: fixed;
   width: 32px;
   height: 32px;
+  top: 10.5px;
+  margin: auto;
+  margin-left: 6px;
+  margin-right: 0;
 }
 
-@media (min-width:600px) {
+.topBar {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+  position: relative;
+}
+
+.topMenu {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 100%;
+}
+
+@media (min-width: 420px) {
+
   .mainContainer {
+  justify-content:end;
+  }
+
+  .topLogo {
+    position: relative;
+    top: initial;
+  }
+
+  .topBar {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    position: relative;
   }
 }

@@ -43,7 +43,7 @@ const RadiantsStudio = () => {
             />
           </div>
         </button>
-        <button>
+        <button className={styles.dateBtn}>
           <div className={styles.dateContainer}>
             <div className={styles.date}>1/10/24</div>
             <img
@@ -66,9 +66,6 @@ const RadiantsStudio = () => {
           <div className={styles.dividerLine} />
         </div>
         <button>
-          <div className={styles.helpButton}>Help</div>
-        </button>
-        <button>
           <div className={styles.userContainer}>
             <div className={styles.userId}>3x91...aNhu</div>
             <img
@@ -85,6 +82,7 @@ const RadiantsStudio = () => {
           <div className={styles.contentContainer}>
             <div className={styles.sidebar}>
               <div className={styles.menu}>
+                <div className={styles.sidebarTop}>
                 <button
                   onClick={() => handleButtonClick("Home")}
                   className={activeTab === "Home" ? "active" : ""}
@@ -103,29 +101,49 @@ const RadiantsStudio = () => {
                 >
                   <div className={styles.menuItem}>Create</div>
                 </button>
-                <button
-                  onClick={() => handleButtonClick("My Studio")}
-                  className={activeTab === "My Studio" ? "active" : ""}
-                >
-                  <div className={styles.menuItem}>My Studio</div>
-                </button>
-                <button
-                  onClick={() => handleButtonClick("Help")}
-                  className={activeTab === "Help" ? "active" : ""}
-                >
-                  <div className={styles.menuItem}>Help</div>
-                </button>
+                </div>
+                <div className={styles.menuBottomLg}>
+
+                  <button
+                    onClick={() => handleButtonClick("My Studio")}
+                    className={activeTab === "My Studio" ? "active" : ""}
+                  >
+                    <div className={styles.menuItem}>My Studio</div>
+                  </button>
+                  <button
+                    onClick={() => handleButtonClick("Help")}
+                    className={activeTab === "Help" ? "active" : ""}
+                  >
+                    <div className={styles.menuItem}>Help</div>
+                  </button>
+
+                </div>
               </div>
             </div>
-            <div className={styles.mainArea}>
-              <div className={styles.contentArea}>
-                {renderContent()}
-              </div>
+            <div className={styles.contentArea}>
+              {renderContent()}
+            </div>
+            <div className={styles.menuBottom}>
+
+              <button
+                onClick={() => handleButtonClick("My Studio")}
+                className={activeTab === "My Studio" ? "active" : ""}
+              >
+                <div className={styles.menuItem}>My Studio</div>
+              </button>
+              <button
+                onClick={() => handleButtonClick("Help")}
+                className={activeTab === "Help" ? "active" : ""}
+              >
+                <div className={styles.menuItem}>Help</div>
+              </button>
+
             </div>
           </div>
-        </div>
-      </main>
+        
     </div>
+      </main >
+    </div >
   );
 };
 

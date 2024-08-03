@@ -4,10 +4,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px;
+  padding: 6px;
   border: 1px solid #0f0e0c;
   border-left: 0;
-  gap: 8px;
+  gap: 6px;
 }
 
 .buttonText {

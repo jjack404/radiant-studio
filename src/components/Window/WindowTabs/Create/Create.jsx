@@ -18,12 +18,12 @@ function Create() {
             <div id={styles.controlContainer}>
                 <div id={styles.colorPicker}>
                     <div id={styles.showGrid}>
-                        <button id="show-grid-btn">Show Grid</button>
+                        <button id="show-grid-btn">Grid</button>
                     </div>
                     <div id={styles.colorGrid}>
-                        <button id="color-1" className={styles.colorButton} style={{ backgroundColor: '#FCE184' }}></button>
-                        <button id="color-2" className={styles.colorButton} style={{ backgroundColor: '#FFF9E1' }}></button>
-                        <button id="color-3" className={styles.colorButton} style={{ backgroundColor: '#0F0E0C' }}></button>
+                        <button id="color-1" className={styles.colorButton} style={{ backgroundColor: '#FCE184', color: 'rgba(255,255,255,0)' }}>O</button>
+                        <button id="color-2" className={styles.colorButton} style={{ backgroundColor: '#FFF9E1', color: 'rgba(255,255,255,0)' }}>O</button>
+                        <button id="color-3" className={styles.colorButton} style={{ backgroundColor: '#0F0E0C', color: 'rgba(255,255,255,0)' }}>O</button>
                     </div>
                 </div>
                 <div id={styles.undoRedoWrap}>
