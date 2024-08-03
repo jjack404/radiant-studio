@@ -4,7 +4,7 @@
     font-family: Joystix, sans-serif;
     width: stretch;
     height: 100%;
-    padding: 12px;
+    padding: 6px;
     margin: 0 auto;
     text-align: center;
     overflow-y: scroll;
@@ -15,55 +15,135 @@
     flex-direction: column;
     width: stretch;
     object-fit: cover;
-}
-
-.votingGalleryGrid {
-    display: flex;
-    flex-flow: column;
-    flex-wrap: wrap;
-    padding: 12px;
-    gap: 12px;
-    background-color: aliceblue;
-    height: stretch;
-    width: 100%;
+    height: 100%;
+    gap: 6px;
+    padding: 6px;
+    background-color: #fef8e2;
+    border: 1px solid #0f0e0c;
 }
 
 .votingTopThree {
-display: flex;
-flex-direction: row;
-
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    gap: 3px;
 }
 
 .votingRemainder {
-display: flex;
-flex-direction: column;
-
+    display: flex;
+    flex-direction: column;
 }
 
 .votingTopThree div {
-    height: 100px;
-    width: 100px;
-    border: 1px solid #0f0e0c;
-    background-color: #fce184;
-    box-shadow: 2px 2px 0 0 #0f0e0c;
     margin: auto;
+    width: 33%;
+    display: flex;
+    align-items: center;
 }
 
-.votingGalleryContainer div:nth-child(1) {
+.firstPlace {
     filter: drop-shadow(0px 0px 8px #fce184);
     box-shadow: 2px 2px 0 0 #0f0e0c;
     animation: glow 2s infinite;
+    color: var(--Cream, #fef8e2);
+    text-shadow: 0 0 5px #fce184;
+    border: 1px solid #0f0e0c;
+    width: 66%;
+    max-width: 300px;
+    margin: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #0f0e0c;
+}
+
+.firstPlace img {
+    max-width: 100%;
+}
+
+.firstPlace span {
+    font-size: 2em;
+    width: 100%;
+}
+
+.secondThird {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-content: space-evenly;
+    width: auto;
+    gap: 6px;
+}
+
+.secondThird div {
+    background-color: #0f0e0c;
+    color: var(--Cream, #fef8e2);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 2px 2px 0 0 #0f0e0c;
+}
+
+.secondThird div img {
+    width: 100%;
+    height: auto;
+    padding: 1px;
+}
+
+.secondThird div span {
+    width: 10%;
+    line-height: normal;
 }
 
 @keyframes glow {
     0% {
         filter: drop-shadow(0px 0px 1px #fce184);
+        text-shadow: 0 0 1px #fef8e2;
     }
+
     50% {
         filter: drop-shadow(0px 0px 12px #fce184);
+        text-shadow: 0 0 5px #fef8e2;
     }
+
     100% {
         filter: drop-shadow(0px 0px 2px #fce184);
+        text-shadow: 0 0 1px #fef8e2;
     }
 }
 
+.votingRemainder {
+    display: flex;
+    flex-direction: row;
+    background-color: #0f0e0c;
+    border: 1px solid #0f0e0c;
+    gap: 1px;
+}
+
+.votingRemainder div {
+    display: flex;
+    flex-direction: column;
+    background-color: #0f0e0c;
+    width: 100%;
+    gap: 1px;
+}
+
+.remainderLeft div,
+.remainderRight div {
+    background-color: #fce184;
+
+    text-align: left;
+    padding: 3px;
+}
+
+@media (min-width: 375px) {
+    .votingTopThree {
+        flex-direction: row;
+    }
+
+    .secondThird {
+        flex-direction: column;
+    }
+    
+}

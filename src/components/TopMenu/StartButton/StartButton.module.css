@@ -8,12 +8,14 @@
   border: 1px solid #0f0e0c;
   border-left: 0;
   gap: 6px;
+  min-width: 4em;
 }
 
 .buttonText {
   color: var(--Black, #0f0e0c);
   text-align: center;
   text-transform: uppercase;
+  display: none;
   font: 400 13px Joystix, sans-serif;
 }
 
@@ -21,7 +23,19 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  margin: auto;
   gap: 4px;
+}
+
+@media (min-width: 375px) {
+  .buttonText {
+    display: flex;
+  }
+  
+  .dotGroup {
+  margin: auto;
+  }
 }
 
 .dot {

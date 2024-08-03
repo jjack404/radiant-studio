@@ -5,8 +5,10 @@
   width: 100%;
   max-width: 750px;
   height: 100%;
-  top: 3px;
+  max-height: 2em;
+  top: 7px;
   margin: auto;
+  margin-top: 3px;
   align-items: center;
   align-content: center;
   justify-content: space-between;
@@ -15,8 +17,8 @@
 .topLogo {
   display: flex;
   position: fixed;
-  width: 32px;
-  height: 32px;
+  width: 2em;
+  height: 2em;
   top: 10.5px;
   margin: auto;
   margin-left: 6px;
@@ -28,6 +30,7 @@
   flex-direction: row;
   margin: auto;
   position: relative;
+  scale: 75%;
 }
 
 .topMenu {
