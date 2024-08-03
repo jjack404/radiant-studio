@@ -9,6 +9,7 @@
   border-left: 0;
   gap: 6px;
   min-width: 4em;
+  height: 40px;
 }
 
 .buttonText {

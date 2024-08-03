@@ -3,9 +3,6 @@
   align-items: center;
   position: relative;
   box-shadow: 0 0 4px 0 #fce184;
-  background-color: var(--Cream, #fef8e2);
-  padding: 3px 3px;
-  border: 1px solid #0f0e0c;
 }
 
 .iconGroup {
@@ -14,9 +11,13 @@
   margin: auto 0;
   padding: 3px;
   align-items: center;
-  background-color: #fce184;
+  background-color: #fef8e2;
+  border: 1px solid #0f0e0c;
 }
 
+.iconGroup div:nth-child(1) {
+background-color: #fce184;
+}
 
 .icon {
   margin: auto;
