@@ -1,12 +1,12 @@
 .footer {
   background-color: var(--Cream, #fef8e2);
-  display: none;
+  display: flex;
   position: relative;
   width: 100%;
   height: auto;
   flex-direction: column;
   align-items: flex-end;
-  padding: 3px auto 0 auto;
+  padding: auto auto 3px auto;
 }
 
 .footerContent {
@@ -25,6 +25,7 @@
   width: 215px;
   max-width: 50%;
   margin: 0 auto;
+  display: none;
 }
 
 .footerText {
@@ -39,16 +40,16 @@
 
 /* landscape media queries */
 
-@media (min-height: 665px) {
+@media (min-height: 790px) {
 
-.footer {
+.footerLogo {
   display: flex;
 }
 }
 
 @media (min-width: 550px) {
 
-  .footer {
+  .footerLogo {
     display: flex;
   }
   }
