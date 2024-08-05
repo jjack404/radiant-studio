@@ -5,8 +5,10 @@ const Home = () => {
   return (
     <div className={styles.container}>
       <div className={styles.homeWrapper}>
-        <h2>Home</h2>
-        <p>Welcome to the Home tab.</p>
+        <h2>Radiants Studio</h2>
+        <p>What is Radiants Studio?</p>
+        <p>Have fun</p>
+        <p>;)</p>
       </div>
     </div>
   );

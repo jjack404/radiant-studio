@@ -26,7 +26,7 @@ const RadiantsStudio = () => {
       case "Help":
         return <Help />;
       default:
-        return <span style={{margin: "1em"}}>Select a tab to view content</span>;
+        return <Home />;
     }
   };
 

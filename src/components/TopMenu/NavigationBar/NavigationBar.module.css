@@ -15,10 +15,6 @@
   border: 1px solid #0f0e0c;
 }
 
-.iconGroup div:nth-child(1) {
-background-color: #fce184;
-}
-
 .iconGroup div:nth-child(6) {
   display: none;
 }
