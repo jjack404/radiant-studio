@@ -3,7 +3,7 @@
     color: var(--black, #0f0e0c);
     font-family: Joystix, sans-serif;
     width: stretch;
-    height: stretch;
+    height: 100%;
     padding: 6px;
     margin: auto;
     text-align: center;

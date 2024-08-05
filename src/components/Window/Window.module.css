@@ -4,13 +4,14 @@
   background-color: var(--Yellow, #fce184);
   display: flex;
   position: relative;
-  width: stretch;
-  height: 80vh;
+  width: 100%;
+  height: 90%;
   flex-direction: column;
   margin: auto 6px;
   margin-right: 9px;
   overflow: hidden;
   border: 1px solid rgba(15, 14, 12, 1);
+
 }
 
 input,
@@ -401,6 +402,7 @@ a {
   display: flex;
   font-family: 'Joystix', sans-serif;
   overflow: auto;
+  font-size: .8rem;
 }
 
 
