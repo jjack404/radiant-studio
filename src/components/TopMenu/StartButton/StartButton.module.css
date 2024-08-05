@@ -9,7 +9,7 @@
   border-left: 0;
   gap: 6px;
   min-width: 4em;
-  height: 36px;
+  height: 38px;
 }
 
 .buttonText {
@@ -55,6 +55,6 @@
 
 @media (min-width: 500px) {
   .startButton {
-    height: 40px;
+    height: 42px;
   }
 }

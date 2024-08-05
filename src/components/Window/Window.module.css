@@ -198,7 +198,7 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 3px;
+  padding: 6px;
   flex-grow: 1;
 }
 
@@ -209,9 +209,8 @@ a {
 }
 
 .contentWrapper {
-
   background: var(--Cream, #fef8e2);
-  padding: 3px;
+  padding: 6px;
   border: 1px solid rgba(15, 14, 12, 1);
   display: flex;
   flex-grow: 1;
@@ -241,13 +240,16 @@ a {
   .container {
     height: 70vh;
   }
+
+  .menu {
+    border: 1px solid #0f0e0c;
+  }
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
   width: auto;
-  margin-left: 0px;
 }
 
 
@@ -262,7 +264,7 @@ a {
   position: relative;
   flex-direction: column;
   height: 100%;
-  background: var(--Cream, #fef8e2);
+  background: var(--Yellow, #fce184);
   align-content: space-between;
 }
 
@@ -312,13 +314,29 @@ a {
   justify-content: center;
 }
 
-@media (min-width: 350px) {}
 
-.menu button,
+.menu :nth-child(2),
+.menu :nth-child(3),
+.menuBottom :nth-child(2) {
+  border-left: 0;
+}
+
+@media (min-width: 991px) {
+  .menu :nth-child(1),
+  .menu :nth-child(2),
+  .menu :nth-child(3) {
+  border-right: 0;
+  }
+
+  .menu :nth-child(1) {
+    border-left: 0;
+  }
+}
+
+.sidebar button,
 .menuBottom button {
-  background-color: var(--Yellow, #fce184);
+  background-color: var(--Cream, #fef8e2);
   display: flex;
-  gap: -1px;
   font-size: small;
   border: 1px solid #0f0e0c;
   border-bottom: 1px solid #0f0e0c;
@@ -326,19 +344,19 @@ a {
   height: 40px;
   position: relative;
   cursor: pointer;
+
 }
 
 .menu button {
   margin-bottom: -1px;
 }
 
-.menuBottom button {
-  margin-right: -1px;
+@media (min-width: 991px) {
+  .menu button {
+    margin-bottom: initial;
+    margin-top: -1px;
+  }
 }
-
-
-
-
 
 .menuItem {
   display: flex;
@@ -374,7 +392,14 @@ a {
     flex-flow: column;
     display: flex;
     position: absolute;
-    bottom: 1px;
+    bottom: 0px;
+    width: 100%;
+  }
+
+  .menuBottomLg button {
+    border: none;
+    border-top: 1px solid #0f0e0c;
+    width: 100%;
   }
 }
 

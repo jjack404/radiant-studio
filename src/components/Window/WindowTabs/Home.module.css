@@ -1,10 +1,9 @@
 .container {
-    background-color: #fce184;
     color: var(--black, #0f0e0c);
     font-family: Joystix, sans-serif;
     width: stretch;
     height: 100%;
-    padding: 6px;
+    padding: 0;
     margin: auto;
     text-align: center;
 }
@@ -17,6 +16,20 @@
     height: 100%;
     gap: 6px;
     padding: 6px;
-    background-color: #fef8e2;
+    color: #0f0e0c;
+    background-color: var(--Cream, #fef8e2);
     border: 1px solid #0f0e0c;
+    border-left: 0;
+    border-bottom: 1px solid #0f0e0c;
+}
+
+@media (max-width: 990px) {}
+.homeWrapper {
+    border-bottom: 0;
+}
+
+@media (min-width: 991px) {
+    .homeWrapper {
+        border-bottom: 1px solid #0f0e0c;
+    }
 }

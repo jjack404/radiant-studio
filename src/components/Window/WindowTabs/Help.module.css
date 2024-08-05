@@ -1,14 +1,12 @@
 .container {
-    background-color: #fce184;
     color: var(--black, #0f0e0c);
     font-family: Joystix, sans-serif;
     width: stretch;
     height: 100%;
-    padding: 6px;
+    padding: 0;
     margin: auto;
     text-align: center;
 }
-
 .helpWrapper {
     display: flex;
     flex-direction: column;
@@ -19,4 +17,10 @@
     padding: 6px;
     background-color: #fef8e2;
     border: 1px solid #0f0e0c;
+}
+
+
+@media (min-width: 991px) {}
+.helpWrapper {
+    border-left: none;
 }

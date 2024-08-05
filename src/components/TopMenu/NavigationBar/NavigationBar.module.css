@@ -1,3 +1,4 @@
+/* Existing styles */
 .navigationBar {
   display: flex;
   align-items: center;
@@ -15,12 +16,67 @@
   border: 1px solid #0f0e0c;
 }
 
-.iconGroup div:nth-child(6) {
+.iconHide {
   display: none;
+  align-items: center;
+  gap: 3px;
+  margin: 0;
 }
 
-.iconGroup div:nth-child(7) {
-  display: none;
+.navDivider {
+    font: 20px 'Times New Roman';
+    font-weight: 100;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    justify-content: center;
+    text-align: center;
+  }
+
+.iconButton {
+  padding: 0;
+  border: 0;
+  width: auto;
+  height: auto;
+  background-color: #fef8e2;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.iconButton:hover {
+  background-color: #0f0e0c;
+}
+
+/* Add these new rules to NavigationBar.module.css */
+
+/* Override hover styles for active button */
+.iconButton.active:hover {
+  background-color: #fce184;
+}
+
+.iconButton.active:hover .icon svg path {
+  fill: #0f0e0c;
+}
+
+/* Ensure active button always has the active styles */
+.iconButton.active,
+.iconButton.active:hover {
+  border: 1px solid black;
+  background-color: #fce184;
+}
+
+.iconButton.active .icon svg path,
+.iconButton.active:hover .icon svg path {
+  fill: #0f0e0c;
+}
+
+.iconButton .icon svg path {
+  fill: #0f0e0c;
+}
+
+.iconButton:hover .icon svg path {
+  fill: #fce184;
 }
 
 .icon {
@@ -29,7 +85,6 @@
   display: flex;
   align-items: center;
   height: 100%;
-  background-color: #fef8e2;
 }
 
 .navigationBar svg {
@@ -39,11 +94,8 @@
   justify-content: center;
 }
 
-
 .iconGroup div {
   padding: 3px;
-  background-color: #fef8e2;
-  border: 1px solid #0f0e0c;
   display: flex;
   height: 28px;
 }
@@ -54,16 +106,20 @@
   }
 
   .iconGroup div {
-
-  height: 32px;
+    height: 32px;
   }
 
-  .iconGroup div:nth-child(6) {
+  .iconHide {
     display: flex;
   }
-  
-  .iconGroup div:nth-child(7) {
-    display: flex;
-  }
+}
 
+/* New styles for active button */
+.active {
+  border: 1px solid black;
+  background-color: #fce184;
+}
+
+.active .icon svg path {
+  fill: #0f0e0c;
 }
