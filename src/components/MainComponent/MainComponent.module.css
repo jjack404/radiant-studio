@@ -2,6 +2,14 @@ body {
   font-size: 1rem;
 }
 
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
 .mainContainer {
   background: linear-gradient(
       0deg,

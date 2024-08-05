@@ -62,4 +62,12 @@ background-color: #fce184;
   height: 32px;
   }
 
+  .iconGroup div:nth-child(6) {
+    display: flex;
+  }
+  
+  .iconGroup div:nth-child(7) {
+    display: flex;
+  }
+
 }

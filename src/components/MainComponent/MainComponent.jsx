@@ -11,7 +11,8 @@ const MainComponent = () => {
   return (
     <main className={styles.mainContainer}>
       <TopMenu />
-      <Window />
+      <div style={{height:'100%'}}>
+      <Window /></div>
       <Footer />
     </main>
   );

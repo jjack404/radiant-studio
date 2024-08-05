@@ -5,14 +5,21 @@
   display: flex;
   position: relative;
   width: stretch;
-  min-height: 80%;
-  max-height: 100%;
+  height: 80vh;
   flex-direction: column;
   margin: auto 6px;
-  margin-bottom: 2%;
   margin-right: 9px;
   overflow: hidden;
   border: 1px solid rgba(15, 14, 12, 1);
+}
+
+input,
+textarea,
+button,
+select,
+a {
+  -webkit-tap-highlight-color: transparent;
+  color: #0f0e0c;
 }
 
 .header {
@@ -156,7 +163,7 @@
 
 .userContainer {
   display: flex;
-  gap: 16px;
+  gap: 6px;
   font-size: 9pt;
   color: var(--Black, #0f0e0c);
   font-weight: 400;
@@ -231,8 +238,8 @@
 
 @media (min-width: 991px) {
   .container {
-    height: 81vh;
-    max-height: 900px;
+    height: 60vh;
+    max-height: 70vh;
   }
 }
 
@@ -354,7 +361,7 @@
   .menuItem {
     display: flex;
     margin: auto 0;
-    width: 8em;
+    width: 8.45em;
     align-items: center;
   }
 
@@ -399,7 +406,7 @@
 
 @media (min-width: 768px) {
   .container {
-    max-width: 750px;
+    max-width: 66vw;
     margin: auto;
     font-size: .75em;
   }
