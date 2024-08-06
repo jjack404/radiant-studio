@@ -19,8 +19,14 @@
     border: 1px solid #0f0e0c;
 }
 
-
-@media (min-width: 991px) {}
+@media (max-width: 990px) {}
 .helpWrapper {
-    border-left: none;
+    border-bottom: 0;
+}
+
+@media (min-width: 991px) {
+    .helpWrapper {
+        border-bottom: 1px solid #0f0e0c;
+        border-left: 0;
+    }
 }

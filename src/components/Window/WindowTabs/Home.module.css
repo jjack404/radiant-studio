@@ -19,8 +19,6 @@
     color: #0f0e0c;
     background-color: var(--Cream, #fef8e2);
     border: 1px solid #0f0e0c;
-    border-left: 0;
-    border-bottom: 1px solid #0f0e0c;
 }
 
 @media (max-width: 990px) {}
@@ -31,5 +29,6 @@
 @media (min-width: 991px) {
     .homeWrapper {
         border-bottom: 1px solid #0f0e0c;
+        border-left: 0;
     }
 }

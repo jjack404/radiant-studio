@@ -8,7 +8,7 @@ const Home = () => {
         <h2>Radiants Studio</h2>
         <p>What is Radiants Studio?</p>
         <p>Have fun</p>
-        <p>;)</p>
+        <p>:p</p>
       </div>
     </div>
   );

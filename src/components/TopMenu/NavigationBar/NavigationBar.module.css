@@ -96,7 +96,6 @@
 
 .iconGroup div {
   padding: 3px;
-  display: flex;
   height: 28px;
 }
 
@@ -113,6 +112,7 @@
     display: flex;
   }
 }
+
 
 /* New styles for active button */
 .active {

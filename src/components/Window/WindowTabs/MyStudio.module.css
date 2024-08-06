@@ -17,7 +17,7 @@
     gap: 6px;
     padding: 6px;
     background-color: var(--Cream, #fef8e2);
-    border-bottom: 1px solid #0f0e0c;
+    border: 1px solid #0f0e0c;
 }
 
 @media (max-width: 990px) {}
@@ -27,7 +27,7 @@
 
 @media (min-width: 991px) {
     .myStudioWrapper {
-        border: 1px solid #0f0e0c;
+        border-bottom: 1px solid #0f0e0c;
         border-left: 0;
     }
 }

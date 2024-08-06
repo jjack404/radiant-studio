@@ -1,17 +1,16 @@
 .container {
+  background: var(--Yellow, #fce184);
   box-shadow: 4px 4px 0px 0px #0f0e0c;
   box-sizing: border-box;
-  background-color: var(--Yellow, #fce184);
   display: flex;
   position: relative;
   width: 100%;
-  height: 100%;
+  height: 80dvh;
   flex-direction: column;
   margin: auto 6px;
   margin-right: 9px;
   overflow: hidden;
   border: 1px solid rgba(15, 14, 12, 1);
-
 }
 
 input,
@@ -24,10 +23,10 @@ a {
 }
 
 .header {
+  background: var(--Cream, #fef8e2);
   justify-content: center;
   align-content: center;
   border-color: rgba(15, 14, 12, 1);
-  background-color: var(--Cream, #fef8e2);
   display: flex;
   flex-direction: row;
   gap: 3px;
@@ -43,7 +42,7 @@ a {
 }
 
 .header button {
-  background-color: var(--Yellow, #fce184);
+  background: var(--Yellow, #fce184);
   display: flex;
   gap: 8px;
   min-width: 32px;
@@ -56,20 +55,23 @@ a {
 }
 
 .header button::before {
+  background: rgba(15, 14, 12, 1);
   content: '';
   position: absolute;
   left: 0;
   bottom: 0;
   width: 100%;
   height: 1px;
-  background-color: rgba(15, 14, 12, 1);
+}
+
+.header button:hover::before {
+  height: 3px;
 }
 
 .date,
 .userId {
   display: none;
 }
-
 
 .mainContent {
   border-top: 1px solid rgba(15, 14, 12, 1);
@@ -79,13 +81,11 @@ a {
   .header {
     max-width: 100%;
   }
-
-
 }
 
 .iconContainer {
+  background: var(--Yellow, #fce184);
   align-items: center;
-  background-color: var(--Yellow, #fce184);
   align-self: center;
   display: flex;
   justify-content: center;
@@ -113,18 +113,15 @@ a {
   margin: auto;
 }
 
-
 @media (max-width: 991px) {
-
   .dateContainer {
     white-space: initial;
   }
 }
 
 .date {
+  font: 12px Joystix, sans-serif;
   text-shadow: 0px 0px 25.2px rgba(252, 225, 132, 0.62);
-  font-family: Joystix, sans-serif;
-  font-size: 12px;
 }
 
 .dateIcon {
@@ -145,7 +142,7 @@ a {
 }
 
 .dividerLine {
-  background-color: var(--Black, #0f0e0c);
+  background: var(--Black, #0f0e0c);
   height: 1px;
 }
 
@@ -159,8 +156,9 @@ a {
   font: 400 12px Joystix, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
+@media (max-width: 991px) {
 
-@media (max-width: 991px) {}
+}
 
 .userContainer {
   display: flex;
@@ -194,7 +192,7 @@ a {
 }
 
 .mainContent {
-  background-color: var(--Yellow, #fce184);
+  background: var(--Yellow, #fce184);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -252,7 +250,6 @@ a {
   width: auto;
 }
 
-
 @media (max-width: 991px) {
   .sidebar {
     width: 100%;
@@ -287,7 +284,6 @@ a {
 @media (min-width: 991px) {
   .sidebarTop {
     flex-direction: column;
-
   }
 }
 
@@ -308,12 +304,22 @@ a {
   width: 100%;
 }
 
+.menuItem div {
+  text-align: center;
+  width: 100%;
+}
+
 .menuBottom button {
   width: 50%;
   text-align: center;
   justify-content: center;
 }
 
+@media (min-width: 991px) {
+  .menuItem div {
+    text-align: left;
+  }
+}
 
 .menu :nth-child(2),
 .menu :nth-child(3),
@@ -325,7 +331,7 @@ a {
   .menu :nth-child(1),
   .menu :nth-child(2),
   .menu :nth-child(3) {
-  border-right: 0;
+    border-right: 0;
   }
 
   .menu :nth-child(1) {
@@ -335,7 +341,7 @@ a {
 
 .sidebar button,
 .menuBottom button {
-  background-color: var(--Cream, #fef8e2);
+  background: var(--Cream, #fef8e2);
   display: flex;
   font-size: small;
   border: 1px solid #0f0e0c;
@@ -344,17 +350,43 @@ a {
   height: 40px;
   position: relative;
   cursor: pointer;
-
 }
 
 .menu button {
   margin-bottom: -1px;
 }
 
+.menu button::before,
+.menuBottom button::before {
+  background: rgba(15, 14, 12, 1);
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 0px;
+}
+
+.menu button:hover::before,
+.menuBottom button:hover::before {
+  height: 2px;
+}
+
+.menu button.active,
+.menuBottom button.active,
+.menuBottomLg button.active {
+  background-color: #fce184;
+}
+
 @media (min-width: 991px) {
-  .menu button {
+  .sidebarTop button {
     margin-bottom: initial;
     margin-top: -1px;
+    width: 9em;
+  }
+
+  .menuBottomLg {
+    border-bottom: 1px solid #0f0e0c;
   }
 }
 
@@ -387,7 +419,6 @@ a {
     display: none;
   }
 
-
   .menuBottomLg {
     flex-flow: column;
     display: flex;
@@ -419,27 +450,25 @@ a {
 }
 
 .contentArea {
-  background-color: var(--Cream, #fef8e2);
+  font: .8rem 'Joystix', sans-serif;
+  background: var(--Cream, #fef8e2);
   width: 100%;
   height: 100%;
   margin: auto;
   display: flex;
-  font-family: 'Joystix', sans-serif;
   overflow: auto;
-  font-size: .8rem;
 }
-
 
 @media (min-width: 768px) {
   .container {
-    max-width: 66vw;
+    min-width: 70dvw;
+    max-width: 70%;
     margin: auto;
     font-size: .75em;
   }
 }
 
 @media (min-width: 466px) {
-
   .date,
   .userId {
     display: inline;

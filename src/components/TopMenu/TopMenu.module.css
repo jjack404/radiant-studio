@@ -6,7 +6,7 @@
   height: 100%;
   max-height: 40px;
   margin: auto;
-  margin-top: 1.6rem;
+  margin-top: 6px;
   align-items: center;
   align-content: center;
   justify-content: space-between;
@@ -40,7 +40,26 @@ right: 0;
   height: 14em;
   margin: auto;
   margin-right: 0;
+  animation: glow 2s infinite;
+} 
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0px 0px 1px #fce184);
+    text-shadow: 0 0 3px rgba(254, 248, 226, 0);
+  }
+
+  50% {
+    filter: drop-shadow(0px 0px 12px #fce184);
+    text-shadow: 0 0 5px rgba(254, 248, 226, 0.72);
+  }
+
+  100% {
+    filter: drop-shadow(0px 0px 2px #fce184);
+    text-shadow: 0 0 1px rgba(254, 248, 226, 0);
+  }
 }
+
 
 .topBar {
   display: flex;
@@ -58,13 +77,16 @@ right: 0;
   margin: auto;
 }
 
-@media (min-width: 540px) {
-
+@media (min-width: 580px) {
   .topBar {
     display: flex;
     flex-direction: row;
     margin: auto;
     position: relative;
+  }
+
+  .mainContainer {
+    margin-top: 1.6rem;
   }
 }
 

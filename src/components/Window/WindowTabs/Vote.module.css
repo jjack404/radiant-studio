@@ -1,0 +1,30 @@
+.container {
+  background: #fce184;
+  color: var(--black, #0f0e0c);
+  font-family: Joystix, sans-serif;
+  width: stretch;
+  height: 100%;
+  padding: 0;
+  margin: auto;
+  text-align: center;
+  overflow-y: scroll;
+}
+
+.voteWrapper {
+  background: #fef8e2;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  width: stretch;
+  height: 100%;
+  padding: 16px;
+  border: 1px solid #0f0e0c;
+  border-bottom: 0;
+}
+
+@media (min-width: 991px) {
+  .voteWrapper {
+    border-bottom: 1px solid #0f0e0c;
+    border-left: 0;
+  }
+}

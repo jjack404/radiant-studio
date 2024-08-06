@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import styles from "./Window.module.css";
 import Home from "./WindowTabs/Home";
-import Voting from "./WindowTabs/Voting";
+import Vote from "./WindowTabs/Vote";
 import Create from "./WindowTabs/Create/Create";
 import MyStudio from "./WindowTabs/MyStudio";
 import Help from "./WindowTabs/Help";
 
 const RadiantsStudio = () => {
-  const [activeTab, setActiveTab] = useState("");
+  const [activeTab, setActiveTab] = useState("Home");
 
   const handleButtonClick = (tabName) => {
     setActiveTab(tabName);
@@ -17,10 +17,10 @@ const RadiantsStudio = () => {
     switch (activeTab) {
       case "Home":
         return <Home />;
-      case "Voting":
-        return <Voting />;
-      case "Create":
-        return <Create />;
+      case "Vote":
+        return <Vote />;
+{/*      case "Create":
+        return <Create />; */}
       case "My Studio":
         return <MyStudio />;
       case "Help":
@@ -67,7 +67,7 @@ const RadiantsStudio = () => {
         </div>
         <button>
           <div className={styles.userContainer}>
-            <div className={styles.userId}>3x91...aNhu</div>
+            <div className={styles.userId}>Connect</div>
             <img
               loading="lazy"
               src="https://cdn.builder.io/api/v1/image/assets/TEMP/8592287267d33d1d7fee9e1d0446432b8e590eb79d1b9a4d17c4c155d80761a3?apiKey=05ecaddee9444e0b87f4e90bae6c22dc"
@@ -85,38 +85,36 @@ const RadiantsStudio = () => {
                 <div className={styles.sidebarTop}>
                 <button
                   onClick={() => handleButtonClick("Home")}
-                  className={activeTab === "Home" ? "active" : ""}
+                  className={`${styles.menuItem} ${activeTab === "Home" ? styles.active : ""}`}
                 >
-                  <div className={styles.menuItem}>Home</div>
+                  <div>Home</div>
                 </button>
                 <button
-                  onClick={() => handleButtonClick("Voting")}
-                  className={activeTab === "Voting" ? "active" : ""}
+                  onClick={() => handleButtonClick("Vote")}
+                  className={`${styles.menuItem} ${activeTab === "Vote" ? styles.active : ""}`}
                 >
-                  <div className={styles.menuItem}>Voting</div>
+                  <div>Vote</div>
                 </button>
                 <button
                   onClick={() => handleButtonClick("Create")}
-                  className={activeTab === "Create" ? "active" : ""}
+                  className={`${styles.menuItem} ${activeTab === "Create" ? styles.active : ""}`}
                 >
-                  <div className={styles.menuItem}>Create</div>
+                  <div>Create</div>
                 </button>
                 </div>
                 <div className={styles.menuBottomLg}>
-
                   <button
                     onClick={() => handleButtonClick("My Studio")}
-                    className={activeTab === "My Studio" ? "active" : ""}
+                    className={`${styles.menuItem} ${activeTab === "My Studio" ? styles.active : ""}`}
                   >
-                    <div className={styles.menuItem}>My Studio</div>
+                    <div>My Studio</div>
                   </button>
                   <button
                     onClick={() => handleButtonClick("Help")}
-                    className={activeTab === "Help" ? "active" : ""}
+                    className={`${styles.menuItem} ${activeTab === "Help" ? styles.active : ""}`}
                   >
-                    <div className={styles.menuItem}>Help</div>
+                    <div>Help</div>
                   </button>
-
                 </div>
               </div>
             </div>
@@ -124,26 +122,23 @@ const RadiantsStudio = () => {
               {renderContent()}
             </div>
             <div className={styles.menuBottom}>
-
               <button
                 onClick={() => handleButtonClick("My Studio")}
-                className={activeTab === "My Studio" ? "active" : ""}
+                className={`${styles.menuItem} ${activeTab === "My Studio" ? styles.active : ""}`}
               >
-                <div className={styles.menuItem}>My Studio</div>
+                <div>My Studio</div>
               </button>
               <button
                 onClick={() => handleButtonClick("Help")}
-                className={activeTab === "Help" ? "active" : ""}
+                className={`${styles.menuItem} ${activeTab === "Help" ? styles.active : ""}`}
               >
-                <div className={styles.menuItem}>Help</div>
+                <div>Help</div>
               </button>
-
             </div>
           </div>
-        
+        </div>
+      </main>
     </div>
-      </main >
-    </div >
   );
 };
 
