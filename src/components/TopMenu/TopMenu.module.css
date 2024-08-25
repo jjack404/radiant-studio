@@ -1,0 +1,97 @@
+.mainContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  width: 100%;
+  height: 100%;
+  max-height: 40px;
+  margin: auto;
+  margin-top: 6px;
+  align-items: center;
+  align-content: center;
+  justify-content: space-between;
+  font-size: 1vw;
+}
+
+
+
+.topLogoContainer {
+  height: 100%;
+  display: flex;
+  position: absolute;
+right: 0;
+  font-size: .5vw;
+  align-items: center;
+}
+
+.topLogo {
+  position: relative;
+  right: 2em;
+  display: flex;
+  padding: 3em;
+  justify-content: center;
+  box-sizing: border-box;
+
+}
+
+.topLogo svg {
+  position: relative;
+  width: 14em;
+  height: 14em;
+  margin: auto;
+  margin-right: 0;
+  animation: glow 2s infinite;
+} 
+
+@keyframes glow {
+  0% {
+    filter: drop-shadow(0px 0px 1px #fce184);
+    text-shadow: 0 0 3px rgba(254, 248, 226, 0);
+  }
+
+  50% {
+    filter: drop-shadow(0px 0px 12px #fce184);
+    text-shadow: 0 0 5px rgba(254, 248, 226, 0.72);
+  }
+
+  100% {
+    filter: drop-shadow(0px 0px 2px #fce184);
+    text-shadow: 0 0 1px rgba(254, 248, 226, 0);
+  }
+}
+
+
+.topBar {
+  display: flex;
+  flex-direction: row;
+  margin: auto 6px;
+  position: relative;
+}
+
+.topMenu {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 1.2em;
+  margin: auto;
+}
+
+@media (min-width: 580px) {
+  .topBar {
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    position: relative;
+  }
+
+  .mainContainer {
+    margin-top: 1.6rem;
+  }
+}
+
+@media (min-width: 991px) {
+  .topLogo {
+      font-size: .25vw;
+  }
+}

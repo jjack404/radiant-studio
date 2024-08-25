@@ -1,0 +1,230 @@
+.container {
+  background-color: #fef8e2;
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: row;
+  overflow: hidden;
+  margin: auto;
+  justify-content: center;
+}
+
+.containerPaletteWrap {
+  display: flex;
+  width: 95%;
+  flex-direction: column;
+}
+
+.tabContainer {
+  display: flex;
+  margin: auto;
+  min-width: 200px;
+  max-width: 100%;
+  position: relative;
+  color: #0f0e0c;
+  font: 400 12px/1 Joystix, sans-serif;
+}
+
+@media (min-width: 991px) {
+  .tabContainer {
+    margin: 0 auto;
+  }
+}
+
+.tabWrapper {
+  background-color: #fef8e2;
+  box-shadow: 2px 2px 0 -2px #0f0e0c;
+  align-self: stretch;
+  display: flex;
+  min-width: 240px;
+  width: 318px;
+  align-items: center;
+  gap: 4px;
+  margin: 3px 0;
+  padding: 3px;
+  border: 1px solid #000;
+}
+
+.tab {
+  align-self: stretch;
+  height: 40px;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border: 1px solid #0f0e0c;
+  background-color: #fef8e2;
+  font-family: 'Joystix';
+  cursor: pointer;
+}
+
+.activeTab {
+  background-color: #fce184;
+}
+
+.creatorContainer {
+  display: flex;
+  margin: auto;
+  min-width: 240px;
+  height: 100%;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.toolbarTop {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gridToggle {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: #000;
+  text-align: center;
+  font: 400 10px/1 Joystix, sans-serif;
+}
+
+.undoRedoWrap {
+  display: flex;
+  gap: 6px;
+}
+
+.icon {
+  aspect-ratio: 1;
+  object-fit: contain;
+  object-position: center;
+  width: 32px;
+  align-self: stretch;
+  margin: auto 0;
+}
+
+.smallIcon {
+  width: 24px;
+}
+
+.bucketIcon {
+  width: 24px;
+}
+
+.canvasContainer {
+  display: flex;
+  margin-top: 3px;
+  width: 100%;
+  gap: 3px;
+}
+
+.pixelGrid {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  margin: 3px 0;
+  border: 1px solid #0f0e0c;
+}
+
+.canvas {
+  display: flex;
+  height: auto;
+  aspect-ratio: 1/1;
+  width: 100%;
+  max-width: 300px;
+  max-height: 300px;
+  height: 100%;
+  align-items: start;
+  justify-content: center;
+}
+
+.paletteContainer {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  width: 24px;
+  margin: 0 auto
+}
+
+.colorPalette {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 26px;
+  align-content: center;
+  margin-top: 3px;
+}
+
+
+.colorSwatch {
+  border: 1px solid #0f0e0c;
+  display: flex;
+  min-height: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.cream {
+  background-color: #fef8e2;
+}
+
+.yellow {
+  background-color: #fce184;
+  margin-top: -1px;
+}
+
+.black {
+  background-color: #0f0e0c;
+  margin-top: -1px;
+}
+
+.actionBar {
+  display: flex;
+  margin-top: 6px;
+  width: 100%;
+  align-items: start;
+  color: #000;
+  white-space: nowrap;
+  justify-content: space-between;
+  font: 12px Joystix, sans-serif;
+  gap: 3px;
+}
+
+.actionGroup {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.actionButton {
+  align-items: center;
+  border: 1px solid #0f0e0c;
+  display: flex;
+  gap: 6px;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.clearSaveButtons {
+  background: #fef8e2;
+  font-family: 'Joystix';
+}
+
+.submitButton {
+  background: #fce184;
+  font-family: 'Joystix';
+  display: flex;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

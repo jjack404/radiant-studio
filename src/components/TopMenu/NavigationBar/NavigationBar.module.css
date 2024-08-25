@@ -1,0 +1,129 @@
+/* Existing styles */
+.navigationBar {
+  display: flex;
+  align-items: center;
+  position: relative;
+  box-shadow: 0 0 4px 0 #fce184;
+}
+
+.iconGroup {
+  display: flex;
+  gap: 3px;
+  margin: auto 0;
+  padding: 3px;
+  align-items: center;
+  background-color: #fef8e2;
+  border: 1px solid #0f0e0c;
+}
+
+.iconHide {
+  display: none;
+  align-items: center;
+  gap: 3px;
+  margin: 0;
+}
+
+.navDivider {
+    font: 28px 'Times New Roman';
+    font-weight: 100;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    line-height: 0;
+    position: relative;
+    top: -2px;
+  }
+
+.iconButton {
+  padding: 0;
+  border: 0;
+  width: auto;
+  height: auto;
+  background-color: #fef8e2;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.iconButton:hover {
+  background-color: #0f0e0c;
+}
+
+/* Add these new rules to NavigationBar.module.css */
+
+/* Override hover styles for active button */
+.iconButton.active:hover {
+  background-color: #fce184;
+}
+
+.iconButton.active:hover .icon svg path {
+  fill: #0f0e0c;
+}
+
+/* Ensure active button always has the active styles */
+.iconButton.active,
+.iconButton.active:hover {
+  border: 1px solid black;
+  background-color: #fce184;
+}
+
+.iconButton.active .icon svg path,
+.iconButton.active:hover .icon svg path {
+  fill: #0f0e0c;
+}
+
+.iconButton .icon svg path {
+  fill: #0f0e0c;
+}
+
+.iconButton:hover .icon svg path {
+  fill: #fce184;
+}
+
+.icon {
+  margin: auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.navigationBar svg {
+  width: 20px;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+}
+
+.iconGroup div {
+  padding: 3px;
+  height: 24px;
+}
+
+@media (min-width: 500px) {
+  .navigationBar svg {
+    width: 24px;
+  }
+
+  .iconGroup div {
+    height: 24px;
+  }
+
+  .iconHide {
+    display: flex;
+  }
+}
+
+
+/* New styles for active button */
+.active {
+  border: 1px solid black;
+  background-color: #fce184;
+}
+
+.active .icon svg path {
+  fill: #0f0e0c;
+}

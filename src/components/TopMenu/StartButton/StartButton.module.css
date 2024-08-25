@@ -1,0 +1,60 @@
+.startButton {
+  box-shadow: 0 0 4px 0 #fce184;
+  background-color: var(--Yellow, #fce184);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+  border: 1px solid #0f0e0c;
+  border-left: 0;
+  gap: 6px;
+  min-width: 4em;
+  height: 40px;
+}
+
+.buttonText {
+  color: var(--Black, #0f0e0c);
+  text-align: center;
+  text-transform: uppercase;
+  display: none;
+  font: 400 13px Joystix, sans-serif;
+}
+
+.dotGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  gap: 3.5px;
+}
+
+@media (min-width: 375px) {
+  .buttonText {
+    display: flex;
+  }
+  
+  .dotGroup {
+  margin: auto;
+  }
+}
+
+.dot {
+  width: 17px;
+  height: .5px;
+  stroke-width: 1px;
+  stroke: var(--Black, #0f0e0c);
+  border: 1px solid #0f0e0c;
+}
+
+.dotFilled {
+  composes: dot;
+  fill: var(--Black, #0f0e0c);
+  background-color: #0f0e0c;
+}
+
+
+@media (min-width: 500px) {
+  .startButton {
+    height: 40px;
+  }
+}
