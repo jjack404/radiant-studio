@@ -23,19 +23,18 @@
   margin: 0;
 }
 
-.navDivider {
-    font: 28px 'Times New Roman';
-    font-weight: 100;
+.navDivider1,
+.navDivider2 {
     display: flex;
-    margin: 0;
-    padding: 0;
+    margin-left: 1px;
     width: 0;
-    justify-content: center;
-    text-align: center;
-    align-items: center;
-    line-height: 0;
+    left: 1px;
     position: relative;
-    top: -2px;
+    border-left: 1px solid #0f0e0c ;
+  }
+
+  .navDivider2 {
+    left: 3px;
   }
 
 .iconButton {

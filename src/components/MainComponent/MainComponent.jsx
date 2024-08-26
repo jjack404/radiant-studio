@@ -5,8 +5,6 @@ import Window from "../Window/Window";
 import Footer from "../Footer/Footer";
 
 const MainComponent = () => {
-  
-
   return (
     <main className={styles.mainContainer}>
       <TopMenu />

@@ -61,7 +61,7 @@ const NavigationBar = () => {
             </div>
           </button>
           <div className={styles.iconHide}>
-            <div className={styles.navDivider}>|</div>
+            <div className={styles.navDivider1}></div>
             <button
               className={`${styles.iconButton} ${activeButton === 5 ? styles.active : ''}`}
               onClick={() => handleButtonClick(5)}
@@ -81,7 +81,7 @@ const NavigationBar = () => {
                 </svg>
               </div>
             </button>
-            <div className={styles.navDivider}>|</div>
+            <div className={styles.navDivider2}></div>
           </div>
           <button
             className={`${styles.iconButton} ${activeButton === 7 ? styles.active : ''}`}

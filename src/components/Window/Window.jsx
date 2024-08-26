@@ -1,18 +1,26 @@
 import React, { useState } from "react";
 import styles from "./Window.module.css";
 import VoteCreateContainer from "./WindowTabs/VoteCreate/VoteCreateContainer";
+import BgRemover from "./WindowTabs/BgRemover/BgRemover";
+import SVGConverter from "./WindowTabs/SVGConverter/SVGConverter";
 
 const RadiantsStudio = () => {
-  const [activeTab, setActiveTab] = useState("VoteCreateContainer");
+  const [activeTab, setActiveTab] = useState("VoteCreate");
 
   const handleButtonClick = (tabName) => {
     setActiveTab(tabName);
   };
 
+
+  
   const renderContent = () => {
     switch (activeTab) {
-      case "Create":
+      case "VoteCreate":
         return <VoteCreateContainer />;
+        case "SVGConverter":
+        return <SVGConverter />;
+        case "BgRemover":
+        return <BgRemover />;
       default:
         return <VoteCreateContainer />;
     }
@@ -49,6 +57,7 @@ const RadiantsStudio = () => {
           <div className={styles.dividerLine} />
           <div className={styles.dividerLine} />
         </div>
+        <button className={styles.helpButton}>Help</button>
         <button className={styles.userConnect}>
           <div className={styles.userContainer}>
             <div className={styles.userId}>Connect</div>
@@ -66,18 +75,10 @@ const RadiantsStudio = () => {
               <div className={styles.menu}>
                 <div className={styles.menuItemWrap}>
                 <button
-                  onClick={() => handleButtonClick("Create")}
-                  className={`${styles.menuItem} ${activeTab === "Create" ? styles.active : ""}`}
+                  onClick={() => handleButtonClick("VoteCreate")}
+                  className={`${styles.menuItem} ${activeTab === "VoteCreate" ? styles.active : ""}`}
                 >
                   <div><img src={"assets/create-icon.png"}
-                    className={styles.tabIcon}
-                  /></div>
-                </button>
-                <button
-                  onClick={() => handleButtonClick("SVGOptimizer")}
-                  className={`${styles.menuItem} ${activeTab === "SVGOptimizer" ? styles.active : ""}`}
-                >
-                  <div><img src={"assets/svg-op-icon.png"}
                     className={styles.tabIcon}
                   /></div>
                 </button>
@@ -85,13 +86,13 @@ const RadiantsStudio = () => {
                   onClick={() => handleButtonClick("SVGConverter")}
                   className={`${styles.menuItem} ${activeTab === "SVGConverter" ? styles.active : ""}`}
                 >
-                  <div><img src={"assets/svg-convert-icon.png"}
+                  <div><img src={"assets/svg-op-icon.png"}
                     className={styles.tabIcon}
                   /></div>
                 </button>
                 <button
-                  onClick={() => handleButtonClick("BackgroundRemover")}
-                  className={`${styles.menuItem} ${activeTab === "BackgroundRemover" ? styles.active : ""}`}
+                  onClick={() => handleButtonClick("BgRemover")}
+                  className={`${styles.menuItem} ${activeTab === "BgRemover" ? styles.active : ""}`}
                 >
                   <div><img src={"assets/bg-remover-icon.png"}
                     className={styles.tabIcon}

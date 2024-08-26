@@ -1,5 +1,4 @@
 .startButton {
-  box-shadow: 0 0 4px 0 #fce184;
   background-color: var(--Yellow, #fce184);
   display: flex;
   justify-content: space-between;
@@ -10,12 +9,32 @@
   gap: 6px;
   min-width: 4em;
   height: 40px;
+  color: #0f0e0c;
+  z-index: 100;
+  cursor: pointer;
+}
+
+.startButton:hover {
+  background-color: var(--Black, #0f0e0c);
+}
+
+.startButton:hover .buttonText {
+  color: #fce184;
+}
+
+.startButton:hover .dot {
+  stroke: #fce184;
+  border: 1px solid #fce184;
+}
+
+.startButton:hover .dotFilled {
+  fill: #fce184;
+  background-color: #fce184;
 }
 
 .buttonText {
   color: var(--Black, #0f0e0c);
   text-align: center;
-  text-transform: uppercase;
   display: none;
   font: 400 13px Joystix, sans-serif;
 }
@@ -44,6 +63,7 @@
   stroke-width: 1px;
   stroke: var(--Black, #0f0e0c);
   border: 1px solid #0f0e0c;
+  box-sizing: border-box;
 }
 
 .dotFilled {

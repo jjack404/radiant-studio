@@ -1,5 +1,8 @@
 body {
   font-size: .5vw;
+  margin: 0;
+  height: 100dvh;
+  width: 100dvw;
 }
 
 input,
@@ -32,8 +35,4 @@ a {
   margin: auto 0;
   display: flex;
   position: relative;
-}
-
-@media (max-width: 640px) {
-
 }

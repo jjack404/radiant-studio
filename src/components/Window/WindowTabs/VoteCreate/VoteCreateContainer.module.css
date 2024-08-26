@@ -12,6 +12,7 @@
 .containerPaletteWrap {
   display: flex;
   width: 95%;
+  height: 100%;
   flex-direction: column;
 }
 
@@ -25,12 +26,6 @@
   font: 400 12px/1 Joystix, sans-serif;
 }
 
-@media (min-width: 991px) {
-  .tabContainer {
-    margin: 0 auto;
-  }
-}
-
 .tabWrapper {
   background-color: #fef8e2;
   box-shadow: 2px 2px 0 -2px #0f0e0c;
@@ -40,9 +35,18 @@
   width: 318px;
   align-items: center;
   gap: 4px;
-  margin: 3px 0;
+  margin: 6px 0 0 0;
   padding: 3px;
   border: 1px solid #000;
+}
+
+@media (min-width: 991px) {
+  .tabContainer {
+    margin: 0 auto;
+  }
+  .tabWrapper {
+    margin: 12px 0 0 0 !important;
+  }
 }
 
 .tab {
@@ -65,7 +69,7 @@
 
 .creatorContainer {
   display: flex;
-  margin: auto;
+  margin: 0 auto;
   min-width: 240px;
   height: 100%;
   justify-content: center;
@@ -113,7 +117,6 @@
 
 .canvasContainer {
   display: flex;
-  margin-top: 3px;
   width: 100%;
   gap: 3px;
 }

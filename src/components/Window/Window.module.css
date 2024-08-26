@@ -11,6 +11,7 @@
   margin-right: 9px;
   overflow: hidden;
   border: 1px solid rgba(15, 14, 12, 1);
+  user-select: none;
 }
 
 input,
@@ -20,6 +21,7 @@ select,
 a {
   -webkit-tap-highlight-color: transparent;
   color: #0f0e0c;
+  font-family: 'Joystix';
 }
 
 .header {
@@ -174,6 +176,10 @@ a {
   font: 400 12px Joystix, -apple-system, Roboto, Helvetica, sans-serif;
 }
 
+.helpButton {
+  font-size: 9pt;
+}
+
 .userConnect {
   min-width: 33px;
 }
@@ -255,7 +261,7 @@ a {
 
 @media (min-width: 991px) {
   .container {
-    height: 70vh;
+    min-height: 75dvh;
   }
 
   .menu {
@@ -268,7 +274,7 @@ a {
   width: 100%;
   height: auto;
   display: flex;
-  margin-top: 6px;
+  margin: 6px auto;
   justify-content: center;
 }
 
