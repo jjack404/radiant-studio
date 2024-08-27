@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Window.module.css";
 import VoteCreateContainer from "./WindowTabs/VoteCreate/VoteCreateContainer";
 import BgRemover from "./WindowTabs/BgRemover/BgRemover";
-import SVGConverter from "./WindowTabs/SVGConverter/SVGConverter";
+import SvgConverter from "./WindowTabs/SvgConverter/SvgConverter";
 
 const RadiantsStudio = () => {
   const [activeTab, setActiveTab] = useState("VoteCreate");
@@ -17,8 +17,8 @@ const RadiantsStudio = () => {
     switch (activeTab) {
       case "VoteCreate":
         return <VoteCreateContainer />;
-        case "SVGConverter":
-        return <SVGConverter />;
+        case "SvgConverter":
+        return <SvgConverter />;
         case "BgRemover":
         return <BgRemover />;
       default:
@@ -57,7 +57,42 @@ const RadiantsStudio = () => {
           <div className={styles.dividerLine} />
           <div className={styles.dividerLine} />
         </div>
-        <button className={styles.helpButton}>Help</button>
+        <button className={styles.helpButton}><span className={styles.helpText}>Help</span><div className={styles.helpIcon}><svg width="20" height="20" viewBox="0 0 33 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1604_14723)">
+<path d="M32.5952 12.8253H31.0752V20.4453H32.5952V12.8253Z" fill="#0f0e0c"/>
+<path d="M31.0752 20.4453H29.5452V23.4953H31.0752V20.4453Z" fill="#0f0e0c"/>
+<path d="M31.0752 9.77527H29.5452V12.8253H31.0752V9.77527Z" fill="#0f0e0c"/>
+<path d="M29.5452 23.4952H28.0252V26.5352H29.5452V23.4952Z" fill="#0f0e0c"/>
+<path d="M29.5452 6.72525H28.0252V9.77525H29.5452V6.72525Z" fill="#0f0e0c"/>
+<path d="M28.0252 26.5352H26.4952V28.0652H28.0252V26.5352Z" fill="#0f0e0c"/>
+<path d="M28.0252 5.20526H26.4952V6.72526H28.0252V5.20526Z" fill="#0f0e0c"/>
+<path d="M26.4952 28.0652H23.4552V29.5852H26.4952V28.0652Z" fill="#0f0e0c"/>
+<path d="M26.4952 3.68524H23.4552V5.20524H26.4952V3.68524Z" fill="#0f0e0c"/>
+<path d="M23.4552 29.5853H20.4052V31.1153H23.4552V29.5853Z" fill="#0f0e0c"/>
+<path d="M21.9252 6.72526H20.4052V5.20526H12.7852V6.72526H11.2652V8.25526H9.73521V12.8253H12.7852V9.77526H14.3052V8.25526H17.3552V9.77526H18.8852V12.8253H17.3552V14.3453H15.8352V15.8753H14.3052V18.9253H18.8852V17.3953H20.4052V15.8753H21.9252V14.3453H23.4552V8.25526H21.9252V6.72526Z" fill="#0f0e0c"/>
+<path d="M23.4552 2.15524H20.4052V3.68524H23.4552V2.15524Z" fill="#0f0e0c"/>
+<path d="M20.4052 31.1153H12.7852V32.6353H20.4052V31.1153Z" fill="#0f0e0c"/>
+<path d="M18.8852 20.4453H14.3052V21.9653H12.7852V26.5353H14.3052V28.0653H18.8852V26.5353H20.4052V21.9653H18.8852V20.4453Z" fill="#0f0e0c"/>
+<path d="M20.4052 0.635254H12.7852V2.15525H20.4052V0.635254Z" fill="#0f0e0c"/>
+<path d="M12.7852 29.5853H9.73521V31.1153H12.7852V29.5853Z" fill="#0f0e0c"/>
+<path d="M12.7852 2.15524H9.73521V3.68524H12.7852V2.15524Z" fill="#0f0e0c"/>
+<path d="M9.73521 28.0652H6.68521V29.5852H9.73521V28.0652Z" fill="#0f0e0c"/>
+<path d="M9.73521 3.68524H6.68521V5.20524H9.73521V3.68524Z" fill="#0f0e0c"/>
+<path d="M6.68521 26.5352H5.16521V28.0652H6.68521V26.5352Z" fill="#0f0e0c"/>
+<path d="M6.68521 5.20526H5.16521V6.72526H6.68521V5.20526Z" fill="#0f0e0c"/>
+<path d="M5.16522 23.4952H3.64522V26.5352H5.16522V23.4952Z" fill="#0f0e0c"/>
+<path d="M5.16522 6.72525H3.64522V9.77525H5.16522V6.72525Z" fill="#0f0e0c"/>
+<path d="M3.64521 20.4453H2.11521V23.4953H3.64521V20.4453Z" fill="#0f0e0c"/>
+<path d="M3.64521 9.77527H2.11521V12.8253H3.64521V9.77527Z" fill="#0f0e0c"/>
+<path d="M2.11521 12.8253H0.595215V20.4453H2.11521V12.8253Z" fill="#0f0e0c"/>
+</g>
+<defs>
+<clipPath id="clip0_1604_14723">
+<rect width="32" height="32" fill="white" transform="translate(0.595215 0.635254)"/>
+</clipPath>
+</defs>
+</svg>
+</div></button>
         <button className={styles.userConnect}>
           <div className={styles.userContainer}>
             <div className={styles.userId}>Connect</div>
@@ -83,8 +118,8 @@ const RadiantsStudio = () => {
                   /></div>
                 </button>
                 <button
-                  onClick={() => handleButtonClick("SVGConverter")}
-                  className={`${styles.menuItem} ${activeTab === "SVGConverter" ? styles.active : ""}`}
+                  onClick={() => handleButtonClick("SvgConverter")}
+                  className={`${styles.menuItem} ${activeTab === "SvgConverter" ? styles.active : ""}`}
                 >
                   <div><img src={"assets/svg-op-icon.png"}
                     className={styles.tabIcon}

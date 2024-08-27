@@ -180,6 +180,25 @@ a {
   font-size: 9pt;
 }
 
+.helpText {
+  display: none;
+}
+
+.helpIcon {
+  display: flex;
+  margin: auto;
+}
+
+@media (min-width: 580px) {
+  .helpText {
+    display: flex;
+  }
+
+  .helpIcon {
+    display: none;
+  }
+}
+
 .userConnect {
   min-width: 33px;
 }

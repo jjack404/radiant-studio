@@ -1,32 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
+import styles from './BgRemover.module.css';
+import DropZone from '../DropZone';
 
 const BgRemover = () => {
-  const [image, setImage] = useState(null);
-  const [removedBgImage, setRemovedBgImage] = useState(null);
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    setImage(file);
-    // Implement the logic to remove the background here
-  };
-
-  const handleBgRemoval = () => {
-    // Example: Background removal logic here
-    // setRemovedBgImage(processedImage);
-  };
-
   return (
-    <div>
-      <h2>Background Remover</h2>
-      <input type="file" accept="image/*" onChange={handleImageUpload} />
-      <button onClick={handleBgRemoval}>Remove Background</button>
-      {removedBgImage && (
-        <div>
-          <h3>Image with Removed Background</h3>
-          <img src={URL.createObjectURL(removedBgImage)} alt="With Removed Background" />
-        </div>
-      )}
-    </div>
+    <main className={styles.container}>
+      <header className={styles.headerWrap}>
+      <div className={styles.header}>
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/771271dc46435522b90c2a5bc7ce2053e7c2c9b9b2162a56ba4090da00df0766?placeholderIfAbsent=true&apiKey=05ecaddee9444e0b87f4e90bae6c22dc" alt="" className={styles.headerIcon} />
+          <span>Background Remover</span>
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2122c42b9282056f31bb0c8e14744da2ad1ba654bf2442799d380a8051bb2bc7?placeholderIfAbsent=true&apiKey=05ecaddee9444e0b87f4e90bae6c22dc" alt="" className={styles.headerIcon} />
+      </div>
+      </header>
+      <section className={styles.mainContent}>
+      <DropZone />
+      </section>
+    </main>
   );
 };
 
