@@ -7,7 +7,7 @@
   border: 1px solid #0f0e0c;
   border-left: 0;
   gap: 6px;
-  min-width: 4em;
+  min-width: 33px;
   height: 40px;
   color: #0f0e0c;
   z-index: 100;
@@ -76,5 +76,6 @@
 @media (min-width: 500px) {
   .startButton {
     height: 40px;
+    min-width: 4em;
   }
 }

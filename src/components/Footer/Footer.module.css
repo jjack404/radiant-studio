@@ -6,15 +6,15 @@
   height: auto;
   flex-direction: column;
   align-items: flex-end;
-  padding: auto auto 3px auto;
+  padding: auto auto 2px auto;
 }
 
 .footerContent {
   display: flex;
   position: relative;
-  padding: 0 15px;
+  padding: 0;
   bottom: 0;
-  width: 100%;
+  width: 95%;
   flex-direction: column;
   margin: 0 auto;
 }
@@ -31,11 +31,17 @@
 .footerText {
   color: #000;
   text-align: center;
-  font: 400 9px/122.5% Joystix, -apple-system, Roboto, Helvetica, sans-serif;
+  font: 8px/122.5% Joystix, -apple-system, Roboto, Helvetica, sans-serif;
   padding: 0;
   margin: 0.5px auto;
 }
 
+
+@media (min-height: 675px) { 
+  .footerText {
+    font-size: 9px;
+  }
+}
 
 
 /* landscape media queries */
@@ -51,5 +57,6 @@
 
   .footerLogo {
     display: flex;
+    height: 20px;
   }
   }

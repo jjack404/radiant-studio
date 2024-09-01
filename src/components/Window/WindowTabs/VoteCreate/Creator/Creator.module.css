@@ -1,0 +1,163 @@
+.creatorContainer {
+    display: flex;
+    margin: 0 auto;
+    min-width: 240px;
+    height: 100%;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.toolbarTop {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 3px;
+}
+
+.gridToggle {
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #0f0e0c;
+    text-align: center;
+    font: 400 10px/1 Joystix, sans-serif;
+}
+
+.undoRedoWrap {
+    display: flex;
+    gap: 6px;
+}
+
+.icon {
+    aspect-ratio: 1;
+    object-fit: contain;
+    object-position: center;
+    width: 32px;
+    align-self: stretch;
+    margin: auto 0;
+}
+
+.smallIcon {
+    width: 24px;
+}
+
+.bucketIcon {
+    width: 24px;
+}
+
+.canvasContainer {
+    display: flex;
+    width: 100%;
+    gap: 3px;
+}
+
+.canvases {
+    display: flex;
+    height: auto;
+    aspect-ratio: 1/1;
+    width: 100%;
+    max-width: 300px;
+    max-height: 300px;
+    border: 1px solid #0f0e0c; /* Re-add border */
+    position: relative; /* Ensure both canvases are positioned correctly */
+}
+
+.drawingCanvas {
+    width: 100%;
+    height: 100%;
+    position: absolute; /* Position the drawing canvas */
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+
+.gridCanvas {
+    z-index: 1000;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: none; 
+}
+
+.paletteContainer {
+    position: relative;
+    display: flex;
+    align-items: flex-start;
+    width: 24px;
+    margin: 0 auto;
+}
+
+.colorPalette {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 26px;
+    align-content: center;
+    margin-top: 3px;
+}
+
+.colorSwatch {
+    border: 1px solid #0f0e0c;
+    display: flex;
+    min-height: 24px;
+    width: 24px;
+    height: 24px;
+}
+
+.cream {
+    background-color: #fef8e2;
+}
+
+.yellow {
+    background-color: #fce184;
+    margin-top: -1px;
+}
+
+.black {
+    background-color: #0f0e0c;
+    margin-top: -1px;
+}
+
+.actionBar {
+    display: flex;
+    margin-top: 6px;
+    width: 100%;
+    align-items: start;
+    color: #0f0e0c;
+    white-space: nowrap;
+    justify-content: space-between;
+    font: 12px Joystix, sans-serif;
+    gap: 3px;
+}
+
+.actionGroup {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+.actionButton {
+    align-items: center;
+    border: 1px solid #0f0e0c;
+    display: flex;
+    gap: 6px;
+    padding: 8px;
+    font-size: 12px;
+}
+
+.clearSaveButtons {
+    background: #fef8e2;
+    font-family: 'Joystix';
+}
+
+.submitButton {
+    background: #fce184;
+    font-family: 'Joystix';
+    display: flex;
+}

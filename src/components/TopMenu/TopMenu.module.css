@@ -19,7 +19,7 @@
   height: 100%;
   display: flex;
   position: absolute;
-right: 0;
+  right: 0;
   font-size: .5vw;
   align-items: center;
 }
@@ -31,7 +31,6 @@ right: 0;
   padding: 3em;
   justify-content: center;
   box-sizing: border-box;
-
 }
 
 .topLogo svg {
@@ -86,8 +85,14 @@ right: 0;
   }
 
   .mainContainer {
-    margin-top: 1.6rem;
+    margin-top: 12px;
   }
+}
+
+@media (min-width: 768px) {
+  .topLogo {
+    margin-top: 1.6rem;
+}
 }
 
 @media (min-width: 991px) {

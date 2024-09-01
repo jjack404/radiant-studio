@@ -32,7 +32,7 @@ a {
 
 .windowWrapper {
   height: 100%; 
-  margin: 12px 0 8px 0 ;
+  margin: 6px 0 8px 0 ;
   display: flex;
   position: relative;
   justify-content: center;

@@ -21,8 +21,8 @@
 
 .card {
   position: absolute;
-  height: 250px;
-  min-width: 250px;
+  height: 200px;
+  min-width: 200px;
   width: 100%;
   background-color: #fef8e2;
   display: flex;
@@ -31,7 +31,7 @@
   border: 1px solid #0f0e0c;
   touch-action: none;
   user-select: none;
-  /* Prevent text selection */
+  z-index: 100;
 }
 
 .cardImageContainer {
@@ -66,6 +66,7 @@
   flex-direction: column;
   background-color: #fef8e2;
   width: 100%;
+  height: 3.3em;
   border: 1px solid #0f0e0c;
   left: -1px;
 }
@@ -87,13 +88,13 @@
 
 .VoteButtons {
   width: 250px;
-  height: 150px;
   gap: 16px;
   position: relative;
   transform: translateY(50%);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  z-index: 1;
 }
 
 .BadButton,
@@ -108,24 +109,69 @@
   box-sizing: border-box;
   box-shadow: 3px 3px 0 #0f0e0c;
   cursor: pointer;
-  width: 126px;
-  height: 88px;
-  gap: 6px;
+  width: 48px;
+  height: 48px;
   transform: translateY(-50%);
+}
+
+.BadButton svg,
+.RadButton svg {
+  width: 18px;
+}
+
+@media (min-width: 0px) {
+  .VoteButtons {
+    width: 100%;
+    height: 0;
+    transform: initial;
+    position: relative;
+    top: -50%;
+  }
+}
+
+@media (min-width: 390px) {
+  .VoteButtons {
+    width: 95%;
+    transform: translateY(50%);
+    position: relative;
+  }
 }
 
 @media (min-width: 580px) {
   .VoteButtons {
-    position: absolute;
-    width: 100%;
-    max-width: 500px;
+    position: relative;
+    display: flex;
+    width: 94%;
+    max-width: 498px;
     gap: 0;
-    top: 50%;
   }
 
   .BadButton,
   .RadButton {
-    width: 75px;
+    width: 96px;
+    height: 88px;
+    gap: 3px;
+  }
+
+  .BadButton svg,
+  .RadButton svg {
+    width: initial;
+  }
+}
+
+
+
+@media (min-width: 991px) {
+.VoteButtons {
+  width: 100%;
+
+  max-width: 600px;
+}
+
+  .BadButton,
+  .RadButton {
+    width: 126px;
+    height: 88px;
   }
 }
 

@@ -1,22 +1,20 @@
-import React, { useState } from 'react';
-import OuterShape from './OuterShape';
+// ToggleButton.jsx
+import React from 'react';
 import InnerFill from './InnerFill';
+import OuterShape from './OuterShape';
 
-const ToggleButton = () => {
-  const [isToggled, setIsToggled] = useState(false);
-
-  const handleToggle = () => {
-    setIsToggled(!isToggled);
-  };
-
-  return (
-    <div onClick={handleToggle} style={styles.toggleContainer}>
-      <OuterShape />
-      <div style={{ ...styles.innerFill, transform: isToggled ? 'translateX(8px)' : 'translateX(0)' }}>
-        <InnerFill />
-      </div>
-    </div>
-  );
+const ToggleButton = ({ isActive, onClick }) => {
+    return (
+        <div onClick={onClick} style={styles.toggleContainer}>
+            {/* OuterShape SVG */}
+            <OuterShape />
+            <div style={{ ...styles.innerFill, transform: isActive ? 'translateX(8px)' : 'translateX(0)' }}>
+            {/* InnerFill SVG with conditional transform */}
+           
+                <InnerFill />
+            </div>
+        </div>
+    );
 };
 
 const styles = {
@@ -30,10 +28,15 @@ const styles = {
   },
   innerFill: {
     position: 'absolute',
-    top: '3.5px',
+    top: '3.25px',
     left: '3px',
     transition: 'transform 0.1s ease',
   },
 };
 
 export default ToggleButton;
+
+
+
+
+
