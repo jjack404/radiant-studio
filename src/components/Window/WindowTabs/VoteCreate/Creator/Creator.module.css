@@ -96,10 +96,10 @@
     position: relative;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 0px;
     width: 26px;
-    align-content: center;
-    margin-top: 3px;
+    align-items: center;
+    justify-items: center;
 }
 
 .colorSwatch {
@@ -108,19 +108,31 @@
     min-height: 24px;
     width: 24px;
     height: 24px;
+    cursor: pointer; /* Add cursor change to indicate clickable */
+}
+
+.colorSwatch.active {
+    transform: scale(0.8);
+    margin: 4px;
+    margin-top: 3px;
 }
 
 .cream {
     background-color: #fef8e2;
+    margin: 0;
+    padding: 0;
 }
 
 .yellow {
     background-color: #fce184;
+    margin: 0;
     margin-top: -1px;
+    padding: 0;
 }
 
 .black {
     background-color: #0f0e0c;
+    padding: 0;
     margin-top: -1px;
 }
 
@@ -142,22 +154,25 @@
     gap: 3px;
 }
 
-.actionButton {
+  
+  .actionButton {
     align-items: center;
     border: 1px solid #0f0e0c;
     display: flex;
     gap: 6px;
     padding: 8px;
     font-size: 12px;
-}
-
-.clearSaveButtons {
+  }
+  
+  .clearSaveButtons {
     background: #fef8e2;
     font-family: 'Joystix';
-}
-
-.submitButton {
+    cursor: pointer;
+  }
+  
+  .submitButton {
     background: #fce184;
     font-family: 'Joystix';
     display: flex;
-}
+  }
+  

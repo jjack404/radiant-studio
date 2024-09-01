@@ -1,28 +1,23 @@
 // Creator.jsx
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import styles from './Creator.module.css';
 import ToolbarButton from './ToolbarButton';
 import ToggleButton from './ToggleButton/ToggleButton';
 import ColorPalette from './ColorPalette';
 import ActionButton from './ActionButton';
 import GridCanvas from './GridCanvas';
+import DrawingGrid from './DrawingGrid';
 
 const Creator = () => {
-    const drawingCanvasRef = useRef(null);
     const [showGrid, setShowGrid] = useState(false);
+    const [selectedColor, setSelectedColor] = useState('#0f0e0c'); // Default selected color hex for black
+    const drawingGridRef = useRef(null); // Reference to DrawingGrid component
 
-    useEffect(() => {
-        const drawingCanvas = drawingCanvasRef.current;
-        if (!drawingCanvas) return;
-
-        // Set the actual size of the canvas
-        drawingCanvas.width = 3200;
-        drawingCanvas.height = 3200;
-
-        // Scale down to fit container
-        drawingCanvas.style.width = '100%';
-        drawingCanvas.style.height = '100%';
-    }, []);
+    const handleClearCanvas = () => {
+        if (drawingGridRef.current) {
+            drawingGridRef.current.clearCanvas();
+        }
+    };
 
     return (
         <section className={styles.creatorContainer}>
@@ -39,17 +34,17 @@ const Creator = () => {
             
             <div className={styles.canvasContainer}>
                 <div className={styles.canvases}>
-                    <canvas ref={drawingCanvasRef} className={styles.drawingCanvas} />
+                    <DrawingGrid ref={drawingGridRef} selectedColor={selectedColor} /> {/* Pass ref to DrawingGrid */}
                     <GridCanvas showGrid={showGrid} />
                 </div>
                 <div className={styles.paletteContainer}>
-                    <ColorPalette />
+                    <ColorPalette onColorChange={setSelectedColor} />
                 </div>
             </div>
             
             <div className={styles.actionBar}>
                 <div className={styles.actionGroup}>
-                    <ActionButton iconSrc="./assets/clear-icon.png" label="Clear" />
+                    <ActionButton iconSrc="./assets/clear-icon.png" label="Clear" onClick={handleClearCanvas} /> {/* Clear button triggers handleClearCanvas */}
                     <ActionButton iconSrc="./assets/save-icon.png" label="Save" />
                 </div>
                 <ActionButton iconSrc="./assets/submit-icon.png" label="Submit" submit />
