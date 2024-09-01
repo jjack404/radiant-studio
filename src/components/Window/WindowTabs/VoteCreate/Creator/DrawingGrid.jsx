@@ -115,7 +115,7 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
         };
     }, [handleMouseDown, handleMouseMove, handleMouseUp]);
 
-    return <canvas ref={drawingCanvasRef} style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 100 }} />;
+    return <canvas ref={drawingCanvasRef} className="drawingCanvas" />;
 });
 
 export default DrawingGrid;
