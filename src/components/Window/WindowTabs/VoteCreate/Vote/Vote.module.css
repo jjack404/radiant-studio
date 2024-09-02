@@ -28,6 +28,7 @@
   margin: 0 auto;
   padding: 0;
   justify-content: center;
+  z-index: 200;
 }
 
 .cardStack {
@@ -36,10 +37,8 @@
   flex-direction: column;
   height: 100%;
   width: 300px;
-  /* Set a fixed width */
   max-width: 200px;
   margin: 0 auto;
-  /* Center align the card stack */
 }
 
 .card {

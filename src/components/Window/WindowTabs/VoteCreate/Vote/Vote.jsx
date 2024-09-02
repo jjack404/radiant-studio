@@ -14,10 +14,10 @@ const cardsData = [
 
 const to = (i) => {
   const yOffset = i === 0 ? 0 : i === 1 ? -6 : -12;
-  return { x: 0, y: yOffset, scale: 1, delay: i * 0 };
+  return { x: 0, y: yOffset, scale: .99, delay: i * 0 };
 };
 
-const from = () => ({ x: 0, y: 1000, scale: 1 });
+const from = () => ({ x: 0, y: 1000, scale: .1 });
 
 const Vote = () => {
   const [gone, setGone] = useState(new Set());
@@ -44,7 +44,7 @@ const Vote = () => {
       if (index !== i) return;
       const isGone = gone.has(index);
       const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : to(i).x;
-      const scale = down ? 1.1 : 1;
+      const scale = down ? 1 : .99;
       return {
         x,
         scale,
@@ -68,7 +68,7 @@ const Vote = () => {
       return {
         x,
         scale: .8,
-        config: { friction: 1, tension: 20 },
+        config: { friction: 1, tension: 200 },
       };
     });
 
