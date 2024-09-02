@@ -1,15 +1,14 @@
-// DrawingGrid.jsx
 import React, { useEffect, useRef, useState, forwardRef, useImperativeHandle } from 'react';
 
 const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
     const drawingCanvasRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
-    const [lastPos, setLastPos] = useState(null); // Track the last position for line drawing
+    const [lastPos, setLastPos] = useState(null);
 
     useImperativeHandle(ref, () => ({
         clearCanvas() {
             const ctx = drawingCanvasRef.current.getContext('2d');
-            const cellSize = 100; // 3200px canvas / 32 cells = 100px per cell
+            const cellSize = 100;
             ctx.fillStyle = '#fce184';
             for (let x = 0; x < drawingCanvasRef.current.width; x += cellSize) {
                 for (let y = 0; y < drawingCanvasRef.current.height; y += cellSize) {
@@ -17,7 +16,6 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
                 }
             }
         },
-        // Expose the canvas element itself
         getCanvas() {
             return drawingCanvasRef.current;
         }
@@ -27,50 +25,29 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
         const drawingCanvas = drawingCanvasRef.current;
         if (!drawingCanvas) return;
 
-        // Set the actual size of the canvas
         drawingCanvas.width = 3200;
         drawingCanvas.height = 3200;
-
-        // Scale down to fit container
         drawingCanvas.style.width = '100%';
         drawingCanvas.style.height = '100%';
 
         const ctx = drawingCanvas.getContext('2d');
-        const cellSize = 100; // 3200px canvas / 32 cells = 100px per cell
+        const cellSize = 100;
 
-        // Fill each grid cell with yellow only once on mount
         ctx.fillStyle = '#fce184';
         for (let x = 0; x < drawingCanvas.width; x += cellSize) {
             for (let y = 0; y < drawingCanvas.height; y += cellSize) {
                 ctx.fillRect(x, y, cellSize, cellSize);
             }
         }
-    }, []); // Empty dependency array ensures this effect only runs once
+    }, []);
 
-    const handleMouseDown = (e) => {
-        setIsDrawing(true);
-        const pos = getMousePosition(e);
-        setLastPos(pos);
-        drawCell(pos);
-    };
-
-    const handleMouseMove = (e) => {
-        if (!isDrawing) return;
-        const pos = getMousePosition(e);
-        drawLine(lastPos, pos); // Draw a line between the last and current position
-        setLastPos(pos);
-    };
-
-    const handleMouseUp = () => {
-        setIsDrawing(false);
-        setLastPos(null);
-    };
-
-    const getMousePosition = (e) => {
+    const getPosition = (e) => {
         const drawingCanvas = drawingCanvasRef.current;
         const rect = drawingCanvas.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
+        const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+        const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+        const x = clientX - rect.left;
+        const y = clientY - rect.top;
         return { x, y };
     };
 
@@ -78,7 +55,7 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
         const drawingCanvas = drawingCanvasRef.current;
         const ctx = drawingCanvas.getContext('2d');
         const rect = drawingCanvas.getBoundingClientRect();
-        const cellSize = 100; // 3200px canvas / 32 cells = 100px per cell
+        const cellSize = 100;
 
         const cellX = Math.floor((pos.x / rect.width) * 32) * cellSize;
         const cellY = Math.floor((pos.y / rect.height) * 32) * cellSize;
@@ -104,20 +81,52 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
         }
     };
 
+    const handleStart = (e) => {
+        e.preventDefault();
+        setIsDrawing(true);
+        const pos = getPosition(e);
+        setLastPos(pos);
+        drawCell(pos);
+    };
+
+    const handleMove = (e) => {
+        e.preventDefault();
+        if (!isDrawing) return;
+        const pos = getPosition(e);
+        drawLine(lastPos, pos);
+        setLastPos(pos);
+    };
+
+    const handleEnd = (e) => {
+        e.preventDefault();
+        setIsDrawing(false);
+        setLastPos(null);
+    };
+
     useEffect(() => {
         const drawingCanvas = drawingCanvasRef.current;
         if (!drawingCanvas) return;
 
-        drawingCanvas.addEventListener('mousedown', handleMouseDown);
-        drawingCanvas.addEventListener('mousemove', handleMouseMove);
-        window.addEventListener('mouseup', handleMouseUp);
+        drawingCanvas.addEventListener('mousedown', handleStart);
+        drawingCanvas.addEventListener('mousemove', handleMove);
+        drawingCanvas.addEventListener('mouseup', handleEnd);
+        drawingCanvas.addEventListener('mouseleave', handleEnd);
+
+        drawingCanvas.addEventListener('touchstart', handleStart);
+        drawingCanvas.addEventListener('touchmove', handleMove);
+        drawingCanvas.addEventListener('touchend', handleEnd);
 
         return () => {
-            drawingCanvas.removeEventListener('mousedown', handleMouseDown);
-            drawingCanvas.removeEventListener('mousemove', handleMouseMove);
-            window.removeEventListener('mouseup', handleMouseUp);
+            drawingCanvas.removeEventListener('mousedown', handleStart);
+            drawingCanvas.removeEventListener('mousemove', handleMove);
+            drawingCanvas.removeEventListener('mouseup', handleEnd);
+            drawingCanvas.removeEventListener('mouseleave', handleEnd);
+
+            drawingCanvas.removeEventListener('touchstart', handleStart);
+            drawingCanvas.removeEventListener('touchmove', handleMove);
+            drawingCanvas.removeEventListener('touchend', handleEnd);
         };
-    }, [handleMouseDown, handleMouseMove, handleMouseUp]);
+    }, [handleStart, handleMove, handleEnd]);
 
     return <canvas ref={drawingCanvasRef} className="drawingCanvas" />;
 });
