@@ -13,8 +13,8 @@ const cardsData = [
 ];
 
 const to = (i) => {
-  const xOffset = i === 0 ? 0 : i === 1 ? -6 : -12;
-  return { x: xOffset, y: i * 4, scale: 1, delay: i * 0 };
+  const yOffset = i === 0 ? 0 : i === 1 ? -6 : -12;
+  return { x: 0, y: yOffset, scale: 1, delay: i * 0 };
 };
 
 const from = () => ({ x: 0, y: 1000, scale: 1 });
@@ -67,8 +67,8 @@ const Vote = () => {
       const x = isGone ? (200 + window.innerWidth) * dir : to(i).x;
       return {
         x,
-        scale: 1,
-        config: { friction: 50, tension: 200 },
+        scale: .8,
+        config: { friction: 1, tension: 20 },
       };
     });
 
@@ -80,6 +80,7 @@ const Vote = () => {
   return (
     <div className={styles.container}>
       <div className={styles.voteWrapper}>
+        <div className={styles.cardsWrapper}>
         {allGone ? (
           <div className={styles.endMessage}>You've reached the end of the stack</div>
         ) : (
@@ -109,8 +110,8 @@ const Vote = () => {
             </animated.div>
           ))
         )}
-      </div>
-      <div className={styles.VoteButtons}>
+        </div>
+        <div className={styles.VoteButtons}>
         <button className={styles.BadButton}>
           <svg width="38" height="41" viewBox="0 0 38 41" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M29.4697 29.0625V27.1625H27.5697V25.2625H29.4697V6.2125H25.6572V4.3125H29.4697V2.4H37.0947V29.0625H29.4697ZM33.2822 21.45H31.3822V25.2625H33.2822V21.45Z" fill="#0f0e0c" />
@@ -149,6 +150,11 @@ const Vote = () => {
             <path d="M2.67422 19.5498H0.761719V27.1623H2.67422V19.5498Z" fill="#0f0e0c" />
           </svg>
           <span>Rad</span></button>
+      </div>
+      </div>
+      
+      <div className={styles.voteContent}>
+        
       </div>
     </div>
   );

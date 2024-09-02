@@ -58,6 +58,13 @@
 
   .footerLogo {
     display: flex;
-    height: 20px;
+    height: 4dvw;
+    max-height: 100px;
+  }
+  }
+
+  @media (max-height: 680px) {
+  .footerLogo {
+    display: none;
   }
   }

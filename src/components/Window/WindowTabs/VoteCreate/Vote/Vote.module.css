@@ -12,30 +12,69 @@
 .voteWrapper {
   position: relative;
   height: 100%;
+  width: 90%;
   display: flex;
+  flex-direction: column;
   margin: 0;
+  margin-top: 6px;
+  padding: 0;
+  justify-content: start;
+}
+
+.cardsWrapper {
+  display: flex;
+  height: 260px;
+  width: 50%;
+  margin: 0 auto;
   padding: 0;
   justify-content: center;
+}
+
+.cardStack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  width: 300px;
+  /* Set a fixed width */
+  max-width: 200px;
+  margin: 0 auto;
+  /* Center align the card stack */
 }
 
 .card {
   position: absolute;
-  height: 200px;
-  min-width: 200px;
+  height: auto;
+  max-height: 250px;
+  max-width: 212px;
   width: 100%;
-  background-color: #fef8e2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* Make each card take the full width of the stack */
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  /* For smooth transitions */
   border: 1px solid #0f0e0c;
-  touch-action: none;
-  user-select: none;
-  z-index: 100;
 }
+
+@media (min-width: 320px) {
+
+  .cardsWrapper {
+    height: 296px;
+  }
+
+  .cardStack {
+    max-width: 250px;
+  }
+
+  .card {
+    max-height: 298px;
+    max-width: 250px;
+  }
+}
+
 
 .cardImageContainer {
   width: 100%;
+  max-width: 300px;
   padding-top: 100%;
   /* 1:1 Aspect Ratio */
   position: relative;
@@ -46,9 +85,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
+  width: auto;
   height: 100%;
-  object-fit: cover;
   user-drag: none;
   /* Prevent image dragging */
   -webkit-user-drag: none;
@@ -65,9 +103,13 @@
   display: flex;
   flex-direction: column;
   background-color: #fef8e2;
-  width: 100%;
-  height: 3.3em;
+  width: calc(97.5% + 1px);
+  min-height: 2.5em;
+  max-height: 4em;
   border: 1px solid #0f0e0c;
+  border-bottom: 0;
+  padding: 3px;
+  box-sizing: content-box;
   left: -1px;
 }
 
@@ -87,14 +129,16 @@
 }
 
 .VoteButtons {
-  width: 250px;
+  min-width: 100px;
+  width: 212px;
+  max-width: 290px;
   gap: 16px;
   position: relative;
-  transform: translateY(50%);
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  z-index: 1;
+  margin: 0 auto;
+  z-index: 0;
 }
 
 .BadButton,
@@ -109,70 +153,106 @@
   box-sizing: border-box;
   box-shadow: 3px 3px 0 #0f0e0c;
   cursor: pointer;
-  width: 48px;
+  width: 100%;
   height: 48px;
-  transform: translateY(-50%);
 }
 
 .BadButton svg,
 .RadButton svg {
-  width: 18px;
+  width: 15px;
 }
 
-@media (min-width: 0px) {
+@media (min-width: 320px) {
   .VoteButtons {
-    width: 100%;
-    height: 0;
-    transform: initial;
-    position: relative;
-    top: -50%;
-  }
-}
-
-@media (min-width: 390px) {
-  .VoteButtons {
-    width: 95%;
-    transform: translateY(50%);
-    position: relative;
-  }
-}
-
-@media (min-width: 580px) {
-  .VoteButtons {
-    position: relative;
-    display: flex;
-    width: 94%;
-    max-width: 498px;
-    gap: 0;
-  }
-
-  .BadButton,
-  .RadButton {
-    width: 96px;
-    height: 88px;
-    gap: 3px;
+    width: 250px;
+    margin: 0;
+    align-self: center;
+    left: initial;
+    transform: translateY(0);
   }
 
   .BadButton svg,
   .RadButton svg {
-    width: initial;
+    width: 20px;
+  }
+}
+
+@media (min-width: 400px ) {
+
+  .cardsWrapper {
+    height: 340px;
+  }
+
+  .cardStack {
+    max-width: 288px;
+  }
+
+  .card {
+    max-height: 380px;
+    max-width: 288px;
+  }
+
+  .VoteButtons {
+    width: 400px;
+  }
+
+
+}
+
+@media (min-height: 617px) {
+
+  .voteWrapper {
+    margin-top: 12px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .voteWrapper {
+    margin: auto;
+    margin-top: 12px;
+  }
+
+  .cardsWrapper {
+    height: 296px;
+  }
+
+  .cardStack {
+    max-width: 300px;
+  }
+
+  .card {
+    max-height: 398px;
+    max-width: 300px;
+  }
+
+  .VoteButtons {
+    max-width: initial;
+    height: 0%;
+    width: 100%;
+    max-width: 422px;
+    align-items: start;
+    top: -165px;
+  }
+
+  .BadButton,
+  .RadButton {
+    height: 69px;
+    width: 48px;
+  }
+
+  .BadButton svg,
+  .RadButton svg {
+    width: 28px;
   }
 }
 
 
 
 @media (min-width: 991px) {
-.VoteButtons {
-  width: 100%;
+  .VoteButtons {}
 
-  max-width: 600px;
-}
 
-  .BadButton,
-  .RadButton {
-    width: 126px;
-    height: 88px;
-  }
 }
 
 .endMessage {
