@@ -10,13 +10,27 @@ import DrawingGrid from './DrawingGrid';
 
 const Creator = () => {
     const [showGrid, setShowGrid] = useState(false);
-    const [selectedColor, setSelectedColor] = useState('#0f0e0c'); // Default selected color hex for black
-    const drawingGridRef = useRef(null); // Reference to DrawingGrid component
+    const [selectedColor, setSelectedColor] = useState('#0f0e0c'); // Default color is 'black'
+    const drawingCanvasRef = useRef(null);
 
     const handleClearCanvas = () => {
-        if (drawingGridRef.current) {
-            drawingGridRef.current.clearCanvas();
+        if (drawingCanvasRef.current) {
+            drawingCanvasRef.current.clearCanvas();
         }
+    };
+
+    const handleSaveCanvas = () => {
+        const drawingCanvas = drawingCanvasRef.current?.getCanvas();
+        if (drawingCanvas) {
+            const link = document.createElement('a');
+            link.href = drawingCanvas.toDataURL('image/png');
+            link.download = 'drawing.png';
+            link.click();
+        }
+    };
+
+    const handleColorChange = (color) => {
+        setSelectedColor(color);
     };
 
     return (
@@ -31,21 +45,21 @@ const Creator = () => {
                     <ToolbarButton iconSrc="./assets/redo-icon.png" />
                 </div>
             </div>
-            
+
             <div className={styles.canvasContainer}>
                 <div className={styles.canvases}>
-                    <DrawingGrid ref={drawingGridRef} selectedColor={selectedColor} /> {/* Pass ref to DrawingGrid */}
-                    <GridCanvas showGrid={showGrid} />
+                    <DrawingGrid ref={drawingCanvasRef} selectedColor={selectedColor} />
+                    <GridCanvas showGrid={showGrid} drawingCanvasRef={drawingCanvasRef} />
                 </div>
                 <div className={styles.paletteContainer}>
-                    <ColorPalette onColorChange={setSelectedColor} />
+                    <ColorPalette onColorChange={handleColorChange} />
                 </div>
             </div>
-            
+
             <div className={styles.actionBar}>
                 <div className={styles.actionGroup}>
-                    <ActionButton iconSrc="./assets/clear-icon.png" label="Clear" onClick={handleClearCanvas} /> {/* Clear button triggers handleClearCanvas */}
-                    <ActionButton iconSrc="./assets/save-icon.png" label="Save" />
+                    <ActionButton iconSrc="./assets/clear-icon.png" label="Clear" onClick={handleClearCanvas} />
+                    <ActionButton iconSrc="./assets/save-icon.png" label="Save" onClick={handleSaveCanvas} />
                 </div>
                 <ActionButton iconSrc="./assets/submit-icon.png" label="Submit" submit />
             </div>

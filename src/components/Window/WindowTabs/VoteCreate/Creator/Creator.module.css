@@ -108,6 +108,7 @@
     width: 26px;
     align-items: center;
     justify-items: center;
+    margin-top: 1px;
 }
 
 .colorSwatch {
@@ -122,12 +123,12 @@
 .colorSwatch.active {
     transform: scale(0.8);
     margin: 4px;
-    margin-top: 3px;
 }
 
 .cream {
     background-color: #fef8e2;
     margin: 0;
+    margin-top: -1px;
     padding: 0;
 }
 

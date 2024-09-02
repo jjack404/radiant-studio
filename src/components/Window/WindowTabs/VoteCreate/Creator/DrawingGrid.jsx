@@ -17,6 +17,10 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
                 }
             }
         },
+        // Expose the canvas element itself
+        getCanvas() {
+            return drawingCanvasRef.current;
+        }
     }));
 
     useEffect(() => {

@@ -1,6 +1,6 @@
 // ColorPalette.jsx
 import React, { useState } from 'react';
-import styles from './Creator.module.css'; // Adjust if your CSS file is named differently
+import styles from './Creator.module.css';
 
 const ColorPalette = ({ onColorChange }) => {
     const [selectedColor, setSelectedColor] = useState('black'); // Default selected color is 'black'

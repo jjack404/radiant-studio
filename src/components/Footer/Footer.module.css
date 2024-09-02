@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: flex-end;
   padding: auto auto 2px auto;
+  user-select: none;
 }
 
 .footerContent {
