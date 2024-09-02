@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './SvgConverter.module.css';
 import DropZone from '../DropZone/DropZone';
+import '../DropZone/DropZone.module.css';
 import ColorSelector from './ColorSelector';
 
 function SvgConverter() {

@@ -5,7 +5,7 @@
   width: 100%;
   flex-direction: row;
   overflow: hidden;
-  margin: auto;
+  margin: 0;
   justify-content: center;
 }
 
@@ -18,7 +18,7 @@
 
 .tabContainer {
   display: flex;
-  margin: auto;
+  margin: 0 auto;
   min-width: 140px;
   max-width: 100%;
   position: relative;
@@ -35,17 +35,21 @@
   width: 318px;
   align-items: center;
   gap: 4px;
-  margin: 0px 0 0 0;
+  margin: 0;
   padding: 3px;
   border: 1px solid #0f0e0c;
 }
 
 @media (min-width: 991px) {
+
+  .container {
+    margin: 12px;
+  }
+
   .tabContainer {
     margin: 0 auto;
   }
   .tabWrapper {
-    margin: 12px 0 0 0 !important;
   }
 }
 
