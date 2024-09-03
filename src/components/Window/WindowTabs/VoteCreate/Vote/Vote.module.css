@@ -24,11 +24,10 @@
 .cardsWrapper {
   display: flex;
   height: 270px;
-  width: 100%;
   margin: 0 auto;
   padding: 0;
   justify-content: center;
-  z-index: 200;
+  z-index: 20;
 }
 
 .cardStack {
@@ -37,7 +36,6 @@
   flex-direction: column;
   height: 100%;
   width: 300px;
-  max-width: 100%;
   margin: 0 auto;
   transition: transform 0.2s ease, opacity 0.3s ease;
 }
@@ -48,16 +46,15 @@
   max-height: 260px;
   max-width: 212px;
   width: 100%;
-  /* Make each card take the full width of the stack */
   transition: transform 0.3s ease, opacity 0.3s ease;
-  /* For smooth transitions */
   border: 1px solid #0f0e0c;
   border-bottom: 0;
   margin: 0;
+  z-index: 4;
+  touch-action: none;
 }
 
 @media (min-width: 300px) {
-
   .cardsWrapper {
     height: 286px;
   }
@@ -72,12 +69,10 @@
   }
 }
 
-
 .cardImageContainer {
   width: 100%;
   max-width: 300px;
   padding-top: 100%;
-  /* 1:1 Aspect Ratio */
   position: relative;
   overflow: hidden;
 }
@@ -89,11 +84,8 @@
   width: auto;
   height: 100%;
   user-drag: none;
-  /* Prevent image dragging */
   -webkit-user-drag: none;
-  /* Prevent image dragging in Safari */
   user-select: none;
-  /* Prevent image selection */
   pointer-events: none;
 }
 
@@ -139,7 +131,6 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 6px auto;
-  z-index: 0;
 }
 
 .BadButton,
@@ -156,6 +147,7 @@
   cursor: pointer;
   width: 100%;
   height: 48px;
+  z-index: 20;
 }
 
 .BadButton svg,
@@ -179,7 +171,7 @@
   }
 }
 
-@media (min-width: 440px ) {
+@media (min-width: 440px) {
 
   .cardsWrapper {
     height: 330px;
@@ -278,4 +270,20 @@
   margin: auto;
   align-items: center;
   transform: translateY(-30%);
+}
+
+.voteContent {
+  min-height: 10px;
+  max-height: 20px;
+  width: 100%;
+  display: flex;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+}
+
+.voteContent span {
+  text-align: center;
+  width: 100%;
+  font-size: 9pt;
 }

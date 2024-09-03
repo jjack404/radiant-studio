@@ -67,7 +67,8 @@
     margin-right: -1px;    
 }
 
-  .slider::-webkit-slider-thumb:active {
+  .slider::-webkit-slider-thumb:active,
+  .slider::-webkit-slider-thumb:hover {
     background-color: #fef8e2;
   }
   

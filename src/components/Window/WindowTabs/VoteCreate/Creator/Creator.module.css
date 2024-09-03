@@ -197,3 +197,9 @@
     display: flex;
   }
   
+  @media (min-width: 991px)
+  {
+    .creatorContainer {
+        scale: 1.05;
+    }
+  }
