@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, forwardRef, useImperativeHandle, useCallback } from 'react';
 
-const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
+const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode, onDrawEnd }, ref) => {
     const drawingCanvasRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
     const [lastPos, setLastPos] = useState(null);
@@ -19,12 +19,14 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
             }
             drawNeckLines(ctx);  // Redraw neck lines after clearing
             const newState = ctx.getImageData(0, 0, drawingCanvasRef.current.width, drawingCanvasRef.current.height);
-            
+
             // Update history and currentStep
             const newHistory = history.slice(0, currentStep + 1);
             newHistory.push(newState);
             setHistory(newHistory);
             setCurrentStep(newHistory.length - 1);
+
+            if (onDrawEnd) onDrawEnd();  // Save state after clearing canvas
         },
         getCanvas() {
             return drawingCanvasRef.current;
@@ -34,6 +36,7 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
                 const newStep = currentStep - 1;
                 setCurrentStep(newStep);
                 redrawCanvas(history[newStep]);
+                if (onDrawEnd) onDrawEnd();  // Save state after undo
             }
         },
         redo() {
@@ -41,9 +44,10 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
                 const newStep = currentStep + 1;
                 setCurrentStep(newStep);
                 redrawCanvas(history[newStep]);
+                if (onDrawEnd) onDrawEnd();  // Save state after redo
             }
         }
-    }));
+    }), [history, currentStep, onDrawEnd]);
 
     const redrawCanvas = useCallback((imageData) => {
         const ctx = drawingCanvasRef.current.getContext('2d', { willReadFrequently: true });
@@ -227,7 +231,8 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
                 if (cellY < height - cellSize) stack.push({x: cellX, y: cellY + cellSize});
             }
         }
-    }, [selectedColor]);
+        if (onDrawEnd) onDrawEnd();  // Save state after bucket fill
+    }, [selectedColor, onDrawEnd]);
 
     const handleStart = useCallback((e) => {
         e.preventDefault();
@@ -263,7 +268,9 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
         newHistory.push(newState);
         setHistory(newHistory);
         setCurrentStep(newHistory.length - 1);
-    }, [isDrawing, isBucketFillMode, history, currentStep]);
+
+        if (onDrawEnd) onDrawEnd();  // Save state after drawing ends
+    }, [isDrawing, isBucketFillMode, history, currentStep, onDrawEnd]);
 
     useEffect(() => {
         const drawingCanvas = drawingCanvasRef.current;

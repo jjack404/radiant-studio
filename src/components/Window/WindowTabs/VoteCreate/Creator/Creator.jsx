@@ -1,11 +1,11 @@
-import React, { useState, useRef, useMemo } from 'react';
+import React, { useState, useRef, useMemo, useEffect, useCallback } from 'react';
 import styles from './Creator.module.css';
 import ToolbarButton from './ToolbarButton';
 import ToggleButton from './ToggleButton/ToggleButton';
 import ColorPalette from './ColorPalette';
 import ActionButton from './ActionButton';
 import GridCanvas from './GridCanvas';
-import DrawingGrid from './DrawingGrid';
+import DrawingGrid from './DrawingGrid'; // Import the original DrawingGrid component
 
 const Creator = () => {
     const [showGrid, setShowGrid] = useState(false);
@@ -13,12 +13,24 @@ const Creator = () => {
     const [isBucketFillMode, setIsBucketFillMode] = useState(false);
     const drawingCanvasRef = useRef(null);
 
+    // Utility function to save canvas state to local storage
+    const saveToLocalStorage = useCallback(() => {
+        const canvas = drawingCanvasRef.current?.getCanvas();
+        if (canvas) {
+            const dataUrl = canvas.toDataURL();
+            localStorage.setItem('canvasData', dataUrl);
+        }
+    }, []);
+
+    // Handle canvas clearing
     const handleClearCanvas = () => {
         if (drawingCanvasRef.current) {
             drawingCanvasRef.current.clearCanvas();
+            saveToLocalStorage();  // Save state after clearing canvas
         }
     };
 
+    // Handle canvas saving
     const handleSaveCanvas = () => {
         const drawingCanvas = drawingCanvasRef.current?.getCanvas();
         if (drawingCanvas) {
@@ -29,29 +41,57 @@ const Creator = () => {
         }
     };
 
+    // Handle color change
     const handleColorChange = (color) => {
         setSelectedColor(color);
     };
 
+    // Handle undo action
     const handleUndo = () => {
         if (drawingCanvasRef.current) {
             drawingCanvasRef.current.undo();
+            saveToLocalStorage();  // Save state after undo action
         }
     };
 
+    // Handle redo action
     const handleRedo = () => {
         if (drawingCanvasRef.current) {
             drawingCanvasRef.current.redo();
+            saveToLocalStorage();  // Save state after redo action
         }
     };
 
+    // Toggle bucket fill mode
     const toggleBucketFillMode = () => {
         setIsBucketFillMode(!isBucketFillMode);
     };
 
+    // Determine bucket icon color based on the selected color
     const bucketIconColor = useMemo(() => {
         return (selectedColor === '#fce184' || selectedColor === '#fef8e2') ? '#0f0e0c' : '#ffffff';
     }, [selectedColor]);
+
+    // Load canvas from local storage when component mounts
+    useEffect(() => {
+        const loadFromLocalStorage = () => {
+            const canvas = drawingCanvasRef.current?.getCanvas();
+            if (canvas) {
+                const ctx = canvas.getContext('2d', { willReadFrequently: true });
+                const dataUrl = localStorage.getItem('canvasData');
+                if (dataUrl) {
+                    const img = new Image();
+                    img.src = dataUrl;
+                    img.onload = () => {
+                        ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the canvas before drawing
+                        ctx.drawImage(img, 0, 0);
+                    };
+                }
+            }
+        };
+
+        loadFromLocalStorage();
+    }, []);
 
     return (
         <section className={styles.creatorContainer}>
@@ -72,6 +112,7 @@ const Creator = () => {
                         ref={drawingCanvasRef} 
                         selectedColor={selectedColor} 
                         isBucketFillMode={isBucketFillMode}
+                        onDrawEnd={saveToLocalStorage} // Save state after drawing or bucket fill
                     />
                     <GridCanvas showGrid={showGrid} drawingCanvasRef={drawingCanvasRef} />
                 </div>
