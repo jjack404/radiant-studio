@@ -71,6 +71,10 @@
   .slider::-webkit-slider-thumb:hover {
     background-color: #fef8e2;
   }
+
+  .slider::-webkit-slider-thumb:active {
+    border-width: 1px;
+  }
   
   .slider::-webkit-slider-thumb {
     -webkit-appearance: none;
@@ -87,7 +91,7 @@
   }
   
   .slider::-moz-range-thumb {
-    width: 14px;
+    width: 10px;
     height: 14px;
     background: rgba(252, 225, 132, 1);
     border: 2px solid rgba(0, 0, 0, 1);
@@ -97,8 +101,13 @@
     z-index: 4;
   }
 
+  .slider::-moz-range-thumb:hover {
+    background: #fef8e2;
+  }
+
   .slider::-moz-range-thumb:active {
     background-color: #fef8e2;
+    border-width: 1px;
   }
   
   .slider::-webkit-slider-thumb:hover,
