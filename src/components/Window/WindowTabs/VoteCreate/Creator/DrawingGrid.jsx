@@ -129,15 +129,37 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
 
     const isNeckLine = (pos) => {
         const pixelSize = drawingCanvasRef.current.width / 32;
-        const neckLinePositions = [
-            { x: 10 * pixelSize, yStart: 25 * pixelSize, yEnd: 31 * pixelSize },
-            { x: (32 - 16) * pixelSize, yStart: 27 * pixelSize, yEnd: 31 * pixelSize }
-        ];
 
-        return neckLinePositions.some(neck => 
-            pos.x >= neck.x && pos.x < neck.x + pixelSize &&
-            pos.y >= neck.yStart && pos.y < neck.yEnd
-        );
+        // Positions for left and right neck lines
+        const leftNeckX = 10 * pixelSize;
+        const rightNeckX = (32 - 16) * pixelSize;
+        const bottomRowY = drawingCanvasRef.current.height - pixelSize;
+
+        // Check left neck line
+        for (let i = 0; i < 7; i++) {
+            if (
+                pos.x >= leftNeckX &&
+                pos.x < leftNeckX + pixelSize &&
+                pos.y >= bottomRowY - (i * pixelSize) &&
+                pos.y < bottomRowY - (i * pixelSize) + pixelSize
+            ) {
+                return true;
+            }
+        }
+
+        // Check right neck line
+        for (let i = 0; i < 5; i++) {
+            if (
+                pos.x >= rightNeckX &&
+                pos.x < rightNeckX + pixelSize &&
+                pos.y >= bottomRowY - (i * pixelSize) &&
+                pos.y < bottomRowY - (i * pixelSize) + pixelSize
+            ) {
+                return true;
+            }
+        }
+
+        return false;
     };
 
     const drawLine = useCallback((start, end) => {
@@ -190,6 +212,9 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
 
             if (visited.has(`${cellX},${cellY}`)) continue;
             visited.add(`${cellX},${cellY}`);
+
+            // Check if the current position is a neck line
+            if (isNeckLine({ x: cellX, y: cellY })) continue;
 
             const currentColor = ctx.getImageData(cellX, cellY, 1, 1).data;
             if (colorMatch(currentColor, startColor)) {
