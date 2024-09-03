@@ -18,8 +18,12 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
                 }
             }
             const newState = ctx.getImageData(0, 0, drawingCanvasRef.current.width, drawingCanvasRef.current.height);
-            setHistory([newState]);
-            setCurrentStep(0);
+            
+            // Update history and currentStep
+            const newHistory = history.slice(0, currentStep + 1);
+            newHistory.push(newState);
+            setHistory(newHistory);
+            setCurrentStep(newHistory.length - 1);
         },
         getCanvas() {
             return drawingCanvasRef.current;
