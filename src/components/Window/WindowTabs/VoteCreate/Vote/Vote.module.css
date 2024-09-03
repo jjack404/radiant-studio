@@ -106,18 +106,59 @@
 }
 
 .cardTitle {
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .cardUserWrap {
   display: flex;
   flex-direction: row;
   gap: 3px;
+  font-size: 11px;
 }
 
 .cardUser {
   width: auto;
   background-color: #fce182;
+}
+
+.cardBottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardStats {
+  display: flex;
+  justify-content: right;
+  flex-direction: row;
+  width: auto;
+  height: 100%;
+  gap: 12px;
+  position: relative;
+  margin-bottom: 2px;
+}
+
+.cardStatsIconWrap {
+  width: auto;
+  height: 100%;
+  padding: 0;
+  margin: 1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.cardStatsIcon {
+  height: auto;
+  width: auto;
+}
+
+.cardStatsValue {
+  display: inline-flex;
+
+  vertical-align: middle;
 }
 
 .VoteButtons {

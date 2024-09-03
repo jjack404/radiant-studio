@@ -192,6 +192,7 @@ a {
   text-align: center;
   text-shadow: 0px 0px 25.2px rgba(252, 225, 132, 0.62);
   margin: auto 0;
+  transform: translateY(.5px);
   text-wrap: wrap;
   width: auto;
   font: 400 12px Joystix, -apple-system, Roboto, Helvetica, sans-serif;
