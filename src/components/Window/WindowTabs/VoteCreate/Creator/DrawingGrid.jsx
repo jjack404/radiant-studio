@@ -17,6 +17,7 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
                     ctx.fillRect(x, y, cellSize, cellSize);
                 }
             }
+            drawNeckLines(ctx);  // Redraw neck lines after clearing
             const newState = ctx.getImageData(0, 0, drawingCanvasRef.current.width, drawingCanvasRef.current.height);
             
             // Update history and currentStep
@@ -68,11 +69,38 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
             }
         }
 
+        drawNeckLines(ctx);  // Draw neck lines after initial fill
+
         // Save initial state
         const initialState = ctx.getImageData(0, 0, drawingCanvas.width, drawingCanvas.height);
         setHistory([initialState]);
         setCurrentStep(0);
+
+        // Disable right-click context menu on the canvas
+        const disableRightClick = (e) => e.preventDefault();
+        drawingCanvas.addEventListener('contextmenu', disableRightClick);
+
+        return () => {
+            // Clean up event listeners on unmount
+            drawingCanvas.removeEventListener('contextmenu', disableRightClick);
+        };
     }, []);
+
+    const drawNeckLines = (ctx) => {
+        const pixelSize = drawingCanvasRef.current.width / 32;
+        ctx.fillStyle = '#0F0E0C';
+
+        const leftNeckX = 10 * pixelSize;
+        const rightNeckX = (32 - 16) * pixelSize;
+
+        for (let i = 0; i < 7; i++) {
+            ctx.fillRect(leftNeckX, ctx.canvas.height - pixelSize - (i * pixelSize), pixelSize, pixelSize);
+        }
+
+        for (let i = 0; i < 5; i++) {
+            ctx.fillRect(rightNeckX, ctx.canvas.height - pixelSize - (i * pixelSize), pixelSize, pixelSize);
+        }
+    };
 
     const getPosition = useCallback((e) => {
         const drawingCanvas = drawingCanvasRef.current;
@@ -92,9 +120,25 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
         const cellX = Math.floor(pos.x / cellSize) * cellSize;
         const cellY = Math.floor(pos.y / cellSize) * cellSize;
 
+        // Check if the position is part of the neck lines
+        if (isNeckLine(pos)) return;
+
         ctx.fillStyle = selectedColor;
         ctx.fillRect(cellX, cellY, cellSize, cellSize);
     }, [selectedColor]);
+
+    const isNeckLine = (pos) => {
+        const pixelSize = drawingCanvasRef.current.width / 32;
+        const neckLinePositions = [
+            { x: 10 * pixelSize, yStart: 25 * pixelSize, yEnd: 31 * pixelSize },
+            { x: (32 - 16) * pixelSize, yStart: 27 * pixelSize, yEnd: 31 * pixelSize }
+        ];
+
+        return neckLinePositions.some(neck => 
+            pos.x >= neck.x && pos.x < neck.x + pixelSize &&
+            pos.y >= neck.yStart && pos.y < neck.yEnd
+        );
+    };
 
     const drawLine = useCallback((start, end) => {
         const dx = end.x - start.x;
@@ -162,6 +206,7 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
 
     const handleStart = useCallback((e) => {
         e.preventDefault();
+        if (e.button !== 0) return;  // Ignore all mouse button clicks except the primary (left) button
         const pos = getPosition(e);
         if (isBucketFillMode) {
             bucketFill(pos.x, pos.y);
@@ -174,7 +219,7 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
 
     const handleMove = useCallback((e) => {
         e.preventDefault();
-        if (!isDrawing || isBucketFillMode) return;
+        if (e.button !== 0 || !isDrawing || isBucketFillMode) return;  // Ignore right-clicks or non-drawing mode
         const pos = getPosition(e);
         drawLine(lastPos, pos);
         setLastPos(pos);
@@ -182,7 +227,7 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
 
     const handleEnd = useCallback((e) => {
         e.preventDefault();
-        if (!isDrawing && !isBucketFillMode) return;
+        if (e.button !== 0 || (!isDrawing && !isBucketFillMode)) return;  // Ignore right-clicks or if not drawing
         setIsDrawing(false);
         setLastPos(null);
 
