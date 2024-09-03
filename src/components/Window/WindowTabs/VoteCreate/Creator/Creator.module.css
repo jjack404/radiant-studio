@@ -126,11 +126,14 @@
     min-height: 24px;
     width: 24px;
     height: 24px;
-    cursor: pointer; /* Add cursor change to indicate clickable */
+    cursor: pointer;
+    transition: .15s ease;
 }
 
 .colorSwatch.active {
-    transform: scale(0.8);
+    width: 20px;
+    min-height: 20px;
+    height: 20px !important;
     margin: 4px;
 }
 

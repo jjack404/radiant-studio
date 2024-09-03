@@ -48,10 +48,13 @@
 
   .tabContainer {
     margin: 0 auto;
-  }
+      }
+  
+
   .tabWrapper {
   }
 }
+
 
 .tab {
   align-self: stretch;

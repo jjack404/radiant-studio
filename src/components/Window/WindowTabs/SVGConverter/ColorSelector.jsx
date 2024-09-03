@@ -1,20 +1,28 @@
 import React, { useState } from 'react';
-import styles from './SvgConverter.module.css';
+import styles from './ColorSelector.module.css';
 
 function ColorSelector() {
   const [colorCount, setColorCount] = useState(64);
 
   const handleSliderChange = (e) => {
-    setColorCount(e.target.value);
+    setColorCount(parseInt(e.target.value));
   };
+
+  // Calculate the width of the gradient cover
+  const gradientCoverWidth = 100 - ((colorCount / 256) * 100);
 
   return (
     <div className={styles.colorSelector}>
       <div className={styles.colorSelectorHeader}>
-        <label htmlFor="colorSlider" className={styles.colorCount}>NUMBER OF Colors</label>
+        <label htmlFor="colorSlider" className={styles.colorCount}>NUMBER OF COLORS</label>
         <span className={styles.colorCount}>{colorCount}</span>
       </div>
-      <div className={styles.colorSlider}>
+      <div className={styles.colorSliderContainer}>
+        <div className={styles.colorGradient}></div>
+        <div 
+          className={styles.gradientCover} 
+          style={{ width: `${gradientCoverWidth}%` }}
+        ></div>
         <input
           type="range"
           id="colorSlider"

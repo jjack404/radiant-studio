@@ -9,8 +9,8 @@ const GridCanvas = ({ showGrid }) => {
         if (!gridCanvas) return;
 
         // Set the actual size of the canvas
-        gridCanvas.width = 3200;
-        gridCanvas.height = 3200;
+        gridCanvas.width = 320;
+        gridCanvas.height = 320;
 
         // Scale down to fit container
         gridCanvas.style.width = '100%';
@@ -23,8 +23,8 @@ const GridCanvas = ({ showGrid }) => {
             const size = 32; // 32x32 grid
             const gridSize = gridCanvas.width / size;
 
-            ctx.strokeStyle = '#888888)';
-            ctx.lineWidth = 6; // Set grid line width to 1px
+            ctx.strokeStyle = '#cccccc';
+            ctx.lineWidth = 1; // Set grid line width to 1px
             for (let i = 0; i <= size; i++) {
                 const position = i * gridSize;
                 // Draw horizontal lines

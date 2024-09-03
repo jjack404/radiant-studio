@@ -477,3 +477,9 @@ a {
     display: flex;
   }
 }
+
+@media (min-width: 991px) {
+  .contentArea {
+    max-height: 599px;
+  }
+}

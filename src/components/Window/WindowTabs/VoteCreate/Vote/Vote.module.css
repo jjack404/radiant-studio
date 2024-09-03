@@ -37,8 +37,9 @@
   flex-direction: column;
   height: 100%;
   width: 300px;
-  max-width: 200px;
+  max-width: 100%;
   margin: 0 auto;
+  transition: transform 0.2s ease, opacity 0.3s ease;
 }
 
 .card {
@@ -48,10 +49,11 @@
   max-width: 212px;
   width: 100%;
   /* Make each card take the full width of the stack */
-  transition: transform 0.2s ease, opacity 0.3s ease;
+  transition: transform 0.3s ease, opacity 0.3s ease;
   /* For smooth transitions */
   border: 1px solid #0f0e0c;
   border-bottom: 0;
+  margin: 0;
 }
 
 @media (min-width: 300px) {
@@ -159,6 +161,7 @@
 .BadButton svg,
 .RadButton svg {
   width: 15px;
+  color: #0f0e0c;
 }
 
 @media (min-width: 300px) {
@@ -204,6 +207,7 @@
 
   .voteWrapper {
     height: 100%;
+    width: 97%;
     margin: auto;
     align-self: center;
   }
@@ -212,6 +216,7 @@
 @media (min-width: 768px) {
 
   .voteWrapper {
+    height: 0;
   }
 
   .cardsWrapper {
@@ -239,14 +244,14 @@
     display: flex;
     height: 0%;
     width: 100%;
-    max-width: 442px;
+    max-width: 500px;
     translate: 0 -230px;
   }
 
   .BadButton,
   .RadButton {
-    height: 69px;
-    width: 48px;
+    height: 88px;
+    width: 70px;
   }
 
   .BadButton svg,
@@ -273,5 +278,4 @@
   margin: auto;
   align-items: center;
   transform: translateY(-30%);
-
 }

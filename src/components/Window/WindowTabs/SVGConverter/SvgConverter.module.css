@@ -42,6 +42,11 @@
 }
 
 @media (min-width: 991px) {
+  .headerWrap {
+    position: absolute;
+    top: 54px;
+  }
+  
   .header {
     margin: 12px 0 0 0 !important;
   }

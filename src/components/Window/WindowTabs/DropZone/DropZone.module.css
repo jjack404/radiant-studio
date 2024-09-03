@@ -48,3 +48,10 @@
       max-width: 326px;
     }
   }
+
+  @media (min-width: 991px) {
+
+    .dropZone {
+      margin: calc(100% - 240px) 0 0 0 ;
+    }
+  }
