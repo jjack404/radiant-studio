@@ -199,18 +199,32 @@ a {
 
 .helpButton {
   font-size: 9pt;
+  width: 30px;
+  gap: 0 !important;
 }
 
 .helpText {
   display: none;
 }
 
-.helpIcon {
+.helpIconWrap {
   display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.helpIcon {
+  height: 18px;
   margin: auto;
+  transform: translateX(-11%);
 }
 
 @media (min-width: 580px) {
+
+  .helpButton {
+    width: auto;
+  }
+
   .helpText {
     display: flex;
   }

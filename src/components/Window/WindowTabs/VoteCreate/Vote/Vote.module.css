@@ -271,19 +271,3 @@
   align-items: center;
   transform: translateY(-30%);
 }
-
-.voteContent {
-  min-height: 10px;
-  max-height: 20px;
-  width: 100%;
-  display: flex;
-  margin: auto;
-  position: absolute;
-  bottom: 0;
-}
-
-.voteContent span {
-  text-align: center;
-  width: 100%;
-  font-size: 9pt;
-}

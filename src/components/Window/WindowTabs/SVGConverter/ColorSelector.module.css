@@ -63,8 +63,8 @@
     opacity: 1;
     position: relative;
     z-index: 3;
-    margin-left: -1px;
-    margin-right: -1px;    
+    margin-left: -3px;
+    margin-right: -3px;    
 }
 
   .slider::-webkit-slider-thumb:active,

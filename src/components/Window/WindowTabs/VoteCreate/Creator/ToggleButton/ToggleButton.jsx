@@ -28,7 +28,7 @@ const styles = {
   },
   innerFill: {
     position: 'absolute',
-    top: '3.465px',
+    top: '18.66%',
     left: '3px',
     transition: 'transform 0.1s ease',
   },
