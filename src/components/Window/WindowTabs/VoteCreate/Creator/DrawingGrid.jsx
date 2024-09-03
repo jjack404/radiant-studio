@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState, forwardRef, useImperativeHandle, useCallback } from 'react';
 
-const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
+const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode }, ref) => {
     const drawingCanvasRef = useRef(null);
     const [isDrawing, setIsDrawing] = useState(false);
     const [lastPos, setLastPos] = useState(null);
@@ -113,25 +113,76 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
         }
     }, [drawCell]);
 
+    const hexToRgb = (hex) => {
+        const r = parseInt(hex.slice(1, 3), 16);
+        const g = parseInt(hex.slice(3, 5), 16);
+        const b = parseInt(hex.slice(5, 7), 16);
+        return [r, g, b];
+    };
+
+    const colorMatch = (color1, color2) => {
+        return color1[0] === color2[0] && color1[1] === color2[1] && color1[2] === color2[2];
+    };
+
+    const bucketFill = useCallback((startX, startY) => {
+        const drawingCanvas = drawingCanvasRef.current;
+        const ctx = drawingCanvas.getContext('2d', { willReadFrequently: true });
+        const cellSize = 100;
+        const width = drawingCanvas.width;
+        const height = drawingCanvas.height;
+
+        const startColor = ctx.getImageData(startX, startY, 1, 1).data;
+        const targetColor = hexToRgb(selectedColor);
+
+        if (colorMatch(startColor, targetColor)) return;
+
+        const stack = [{x: startX, y: startY}];
+        const visited = new Set();
+
+        while (stack.length > 0) {
+            const {x, y} = stack.pop();
+            const cellX = Math.floor(x / cellSize) * cellSize;
+            const cellY = Math.floor(y / cellSize) * cellSize;
+
+            if (visited.has(`${cellX},${cellY}`)) continue;
+            visited.add(`${cellX},${cellY}`);
+
+            const currentColor = ctx.getImageData(cellX, cellY, 1, 1).data;
+            if (colorMatch(currentColor, startColor)) {
+                ctx.fillStyle = selectedColor;
+                ctx.fillRect(cellX, cellY, cellSize, cellSize);
+
+                if (cellX > 0) stack.push({x: cellX - cellSize, y: cellY});
+                if (cellX < width - cellSize) stack.push({x: cellX + cellSize, y: cellY});
+                if (cellY > 0) stack.push({x: cellX, y: cellY - cellSize});
+                if (cellY < height - cellSize) stack.push({x: cellX, y: cellY + cellSize});
+            }
+        }
+    }, [selectedColor]);
+
     const handleStart = useCallback((e) => {
         e.preventDefault();
-        setIsDrawing(true);
         const pos = getPosition(e);
-        setLastPos(pos);
-        drawCell(pos);
-    }, [getPosition, drawCell]);
+        if (isBucketFillMode) {
+            bucketFill(pos.x, pos.y);
+        } else {
+            setIsDrawing(true);
+            setLastPos(pos);
+            drawCell(pos);
+        }
+    }, [getPosition, drawCell, isBucketFillMode, bucketFill]);
 
     const handleMove = useCallback((e) => {
         e.preventDefault();
-        if (!isDrawing) return;
+        if (!isDrawing || isBucketFillMode) return;
         const pos = getPosition(e);
         drawLine(lastPos, pos);
         setLastPos(pos);
-    }, [isDrawing, getPosition, drawLine, lastPos]);
+    }, [isDrawing, getPosition, drawLine, lastPos, isBucketFillMode]);
 
     const handleEnd = useCallback((e) => {
         e.preventDefault();
-        if (!isDrawing) return;
+        if (!isDrawing && !isBucketFillMode) return;
         setIsDrawing(false);
         setLastPos(null);
 
@@ -142,7 +193,7 @@ const DrawingGrid = forwardRef(({ selectedColor }, ref) => {
         newHistory.push(newState);
         setHistory(newHistory);
         setCurrentStep(newHistory.length - 1);
-    }, [isDrawing, history, currentStep]);
+    }, [isDrawing, isBucketFillMode, history, currentStep]);
 
     useEffect(() => {
         const drawingCanvas = drawingCanvasRef.current;
