@@ -8,19 +8,29 @@ import GridCanvas from './GridCanvas';
 import DrawingGrid from './DrawingGrid'; // Import the original DrawingGrid component
 
 const Creator = () => {
-    const [showGrid, setShowGrid] = useState(false);
+    const [showGrid, setShowGrid] = useState(() => {
+        // Load the initial state of showGrid from local storage
+        const savedShowGrid = localStorage.getItem('showGrid');
+        return savedShowGrid ? JSON.parse(savedShowGrid) : false;
+    });
     const [selectedColor, setSelectedColor] = useState('#0f0e0c');
     const [isBucketFillMode, setIsBucketFillMode] = useState(false);
     const drawingCanvasRef = useRef(null);
+    const [history, setHistory] = useState([]);
+    const [currentStep, setCurrentStep] = useState(-1);
 
-    // Utility function to save canvas state to local storage
+    // Utility function to save the canvas state and history to local storage
     const saveToLocalStorage = useCallback(() => {
         const canvas = drawingCanvasRef.current?.getCanvas();
         if (canvas) {
             const dataUrl = canvas.toDataURL();
             localStorage.setItem('canvasData', dataUrl);
         }
-    }, []);
+        // Save history and current step to local storage
+        localStorage.setItem('history', JSON.stringify(history));
+        localStorage.setItem('currentStep', currentStep);
+        localStorage.setItem('showGrid', JSON.stringify(showGrid));
+    }, [history, currentStep, showGrid]);
 
     // Handle canvas clearing
     const handleClearCanvas = () => {
@@ -67,12 +77,21 @@ const Creator = () => {
         setIsBucketFillMode(!isBucketFillMode);
     };
 
+    // Toggle grid visibility and save state to local storage
+    const toggleShowGrid = () => {
+        setShowGrid((prev) => {
+            const newShowGrid = !prev;
+            localStorage.setItem('showGrid', JSON.stringify(newShowGrid));
+            return newShowGrid;
+        });
+    };
+
     // Determine bucket icon color based on the selected color
     const bucketIconColor = useMemo(() => {
         return (selectedColor === '#fce184' || selectedColor === '#fef8e2') ? '#0f0e0c' : '#ffffff';
     }, [selectedColor]);
 
-    // Load canvas from local storage when component mounts
+    // Load canvas and history from local storage when component mounts
     useEffect(() => {
         const loadFromLocalStorage = () => {
             const canvas = drawingCanvasRef.current?.getCanvas();
@@ -87,6 +106,12 @@ const Creator = () => {
                         ctx.drawImage(img, 0, 0);
                     };
                 }
+
+                // Load history and current step from local storage
+                const savedHistory = JSON.parse(localStorage.getItem('history') || '[]');
+                const savedCurrentStep = parseInt(localStorage.getItem('currentStep'), 10);
+                setHistory(savedHistory);
+                setCurrentStep(savedCurrentStep);
             }
         };
 
@@ -97,7 +122,7 @@ const Creator = () => {
         <section className={styles.creatorContainer}>
             <div className={styles.toolbarTop}>
                 <div className={styles.gridToggle}>
-                    <ToggleButton isActive={showGrid} onClick={() => setShowGrid(prev => !prev)} />
+                    <ToggleButton isActive={showGrid} onClick={toggleShowGrid} />
                     <span>Show Grid</span>
                 </div>
                 <div className={styles.undoRedoWrap}>
@@ -113,6 +138,8 @@ const Creator = () => {
                         selectedColor={selectedColor} 
                         isBucketFillMode={isBucketFillMode}
                         onDrawEnd={saveToLocalStorage} // Save state after drawing or bucket fill
+                        setHistory={setHistory} // Pass down history state setters
+                        setCurrentStep={setCurrentStep} // Pass down current step state setters
                     />
                     <GridCanvas showGrid={showGrid} drawingCanvasRef={drawingCanvasRef} />
                 </div>
