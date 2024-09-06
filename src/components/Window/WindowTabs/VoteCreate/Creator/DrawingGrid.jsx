@@ -124,8 +124,10 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode, onDrawEnd }, 
         const cellX = Math.floor(pos.x / cellSize) * cellSize;
         const cellY = Math.floor(pos.y / cellSize) * cellSize;
 
-        // Check if the position is part of the neck lines
-        if (isNeckLine(pos)) return;
+        // Ensure uneditable edge cells and neck lines
+        if (cellX === 0 || cellY === 0 || cellX >= drawingCanvas.width - cellSize || isNeckLine(pos)) {
+            return;
+        }
 
         ctx.fillStyle = selectedColor;
         ctx.fillRect(cellX, cellY, cellSize, cellSize);
@@ -217,8 +219,8 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode, onDrawEnd }, 
             if (visited.has(`${cellX},${cellY}`)) continue;
             visited.add(`${cellX},${cellY}`);
 
-            // Check if the current position is a neck line
-            if (isNeckLine({ x: cellX, y: cellY })) continue;
+            // Check if the current position is an uneditable edge or neck line
+            if (isNeckLine({ x: cellX, y: cellY }) || cellX === 0 || cellY === 0 || cellX >= width - cellSize) continue;
 
             const currentColor = ctx.getImageData(cellX, cellY, 1, 1).data;
             if (colorMatch(currentColor, startColor)) {

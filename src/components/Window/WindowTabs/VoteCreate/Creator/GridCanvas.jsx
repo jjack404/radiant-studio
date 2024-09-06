@@ -1,4 +1,3 @@
-// GridCanvas.jsx
 import React, { useEffect, useRef } from 'react';
 
 const GridCanvas = ({ showGrid }) => {
@@ -23,20 +22,21 @@ const GridCanvas = ({ showGrid }) => {
             const size = 32; // 32x32 grid
             const gridSize = gridCanvas.width / size;
 
-            ctx.strokeStyle = '#cccccc';
-            ctx.lineWidth = 1; // Set grid line width to 1px
             for (let i = 0; i <= size; i++) {
                 const position = i * gridSize;
-                // Draw horizontal lines
+
+                // Draw horizontal lines (only top two edges red)
                 ctx.beginPath();
                 ctx.moveTo(0, position);
                 ctx.lineTo(gridCanvas.width, position);
+                ctx.strokeStyle = (i === 0 || i === 1) ? 'red' : '#cccccc'; // Top two rows red, others gray
                 ctx.stroke();
-                
-                // Draw vertical lines
+
+                // Draw vertical lines (only left two and right two edges red)
                 ctx.beginPath();
                 ctx.moveTo(position, 0);
                 ctx.lineTo(position, gridCanvas.height);
+                ctx.strokeStyle = (i === 0 || i === 1 || i === size || i === size - 1) ? 'red' : '#cccccc'; // Left two and right two edges red
                 ctx.stroke();
             }
         }
