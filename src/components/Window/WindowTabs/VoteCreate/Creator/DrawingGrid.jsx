@@ -109,10 +109,14 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode, onDrawEnd }, 
     const getPosition = useCallback((e) => {
         const drawingCanvas = drawingCanvasRef.current;
         const rect = drawingCanvas.getBoundingClientRect();
+
+        // Handle touch events or mouse events
         const clientX = e.clientX || (e.touches && e.touches[0].clientX);
         const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+
         const x = (clientX - rect.left) * (drawingCanvas.width / rect.width);
         const y = (clientY - rect.top) * (drawingCanvas.height / rect.height);
+
         return { x, y };
     }, []);
 
@@ -238,7 +242,6 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode, onDrawEnd }, 
 
     const handleStart = useCallback((e) => {
         e.preventDefault();
-        if (e.button !== 0) return;  // Ignore all mouse button clicks except the primary (left) button
         const pos = getPosition(e);
         if (isBucketFillMode) {
             bucketFill(pos.x, pos.y);
@@ -251,7 +254,7 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode, onDrawEnd }, 
 
     const handleMove = useCallback((e) => {
         e.preventDefault();
-        if (e.button !== 0 || !isDrawing || isBucketFillMode) return;  // Ignore right-clicks or non-drawing mode
+        if (!isDrawing || isBucketFillMode) return;  // Ignore non-drawing mode
         const pos = getPosition(e);
         drawLine(lastPos, pos);
         setLastPos(pos);
@@ -259,7 +262,7 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode, onDrawEnd }, 
 
     const handleEnd = useCallback((e) => {
         e.preventDefault();
-        if (e.button !== 0 || (!isDrawing && !isBucketFillMode)) return;  // Ignore right-clicks or if not drawing
+        if (!isDrawing && !isBucketFillMode) return;  // Ignore if not drawing
         setIsDrawing(false);
         setLastPos(null);
 
@@ -278,6 +281,7 @@ const DrawingGrid = forwardRef(({ selectedColor, isBucketFillMode, onDrawEnd }, 
         const drawingCanvas = drawingCanvasRef.current;
         if (!drawingCanvas) return;
 
+        // Add both mouse and touch event listeners
         drawingCanvas.addEventListener('mousedown', handleStart);
         drawingCanvas.addEventListener('mousemove', handleMove);
         drawingCanvas.addEventListener('mouseup', handleEnd);
